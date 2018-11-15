@@ -1,4 +1,3 @@
 # FRCRobotCode
-Robot codes for FRC team 7277
-Mineral Madness Code
-For Beta Bots Mineral Madness Competition
+Mineral Madness Code for Team 7277
+(BetaBots)
