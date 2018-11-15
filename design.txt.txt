@@ -1,0 +1,8 @@
+Design Document:
+
+Control Scheme:
+Drive Train (2 motors)
+Arm (2 motors)
+
+Autonomous:
+NaN
