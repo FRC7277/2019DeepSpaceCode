@@ -1,3 +1,3 @@
 # FRCRobotCode
-Mineral Madness Code for Team 7277
-(BetaBots)
+Party Bot Codes for 7277
+(Pratice Bot)
