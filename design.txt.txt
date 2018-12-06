@@ -1,10 +1,12 @@
 Design Document:
 
 Control Scheme:
-Drive Train (2 motors)
-Arm (2 motors)
+Drive Train (2 motors/side; total 4 motors)
+Air tank + Shirt Cannon (PCM, solenoid, compressor)
+Speaker (Offboard Bluetooth)
+Smoke/Bubble machine (?? controller)
+LED (just wiring)
 
-Push Test
 
 Autonomous:
-NaN
+None -  But we could do something to test opur capability 
