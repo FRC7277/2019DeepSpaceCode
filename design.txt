@@ -1,5 +1,12 @@
 Design Document:
 
 Control Scheme:
+Drive Train
+
+Sensors:
+Reflective tape sensor
+Webcam
 
 Autonomous:
+Not neccesary
+Webcam for video input (due to sandstorm)
