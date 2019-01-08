@@ -1,5 +1,11 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="Put" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="107"/>
+	</widget>
+	<widget field="CT" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="86"/>
+	</widget>
 	<widget field="Camera mode" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
 		<location x="202" y="19"/>
 	</widget>
@@ -16,7 +22,7 @@
 		<location x="290" y="136"/>
 		<width>327</width>
 		<height>246</height>
-		<property name="Camera Choice" value="Gray"/>
+		<property name="Camera Choice" value="Misc"/>
 	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
 		<location x="290" y="4"/>

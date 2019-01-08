@@ -84,6 +84,9 @@ public class Robot extends TimedRobot {
             // Output provides container to put processed frame in
             Mat output = new Mat();
 
+            // Create choice string holder
+            String choice;
+
             // While loop processes until the thread is interrupted
             while (!Thread.interrupted()) {
                 // Frame is taken from cvSink and put into source
@@ -95,7 +98,8 @@ public class Robot extends TimedRobot {
                     outputStream.putFrame(output);
 
                     //Ouput misc
-                    if (vc_chooser.getSelected().equals("Gray")) {
+                    choice = vc_chooser.getSelected();
+                    if (choice.equals("Gray")) {
                         miscOutput.putFrame(output);
                     } else {
                         miscOutput.putFrame(source);
