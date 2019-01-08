@@ -59,7 +59,7 @@ public class Robot extends TimedRobot {
       camera.setResolution(320, 240);
       
       // Create a CvSink pulling from the camera
-      CvSink cvSink = CameraServer.getInstance().getVideo(camera);
+      CvSink cvSink = CameraServer.getInstance().getVideo();
       // Create cv output linked to SmartDashboard component 'Gray'
       CvSource outputStream = CameraServer.getInstance().putVideo("Gray", 320, 240);
       
