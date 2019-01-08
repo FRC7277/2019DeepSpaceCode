@@ -48,35 +48,35 @@ public class Robot extends TimedRobot {
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
     // Put camera to dashboard
-    //CameraServer.getInstance().startAutomaticCapture(0);
+    // CameraServer.getInstance().startAutomaticCapture(0);
 
-    //Create thread for processing camera (asynchrous)
+    // Create thread for processing camera (asynchrous)
     new Thread(() -> {
 
-      //Reference USB camera connected to RIO (and also start automatic capture)
+      // Reference USB camera connected to RIO (and also start automatic capture)
       UsbCamera camera = CameraServer.getInstance().startAutomaticCapture(0);
-      //Define resolution for the camera
+      // Define resolution for the camera
       camera.setResolution(320, 240);
       
-      //Create a CvSink pulling from the camera
+      // Create a CvSink pulling from the camera
       CvSink cvSink = CameraServer.getInstance().getVideo(camera);
-      //Create cv output linked to SmartDashboard component 'Gray'
+      // Create cv output linked to SmartDashboard component 'Gray'
       CvSource outputStream = CameraServer.getInstance().putVideo("Gray", 320, 240);
       
-      //Create mats (matrice capable of containing images) for source and output
-      //Source stores a raw frame from cvSink
+      // Create mats (matrice capable of containing images) for source and output
+      // Source stores a raw frame from cvSink
       Mat source = new Mat();
-      //Output provides container to put processed frame in
+      // Output provides container to put processed frame in
       Mat output = new Mat();
       
-      //While loop processes until the thread is interrupted
+      // While loop processes until the thread is interrupted
       while(!Thread.interrupted()) {
           //Frame is taken from cvSink and put into source
           cvSink.grabFrame(source);
-          //Source is proccessed, and the result is put in output
-          //Current processing is turning to grayscale (mainly for testing)
+          // Source is proccessed, and the result is put in output
+          // Current processing is turning to grayscale (mainly for testing)
           Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
-          //Output is pushed into the output stream (linked to dashboard)
+          // Output is pushed into the output stream (linked to dashboard)
           outputStream.putFrame(output);
 
       }
