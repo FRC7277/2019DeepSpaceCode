@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Joystick;
 
+import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.OI;
 
 /**
  * An example subsystem. You can replace me with your own Subsystem.
@@ -69,7 +69,7 @@ public class DriveTrain extends Subsystem {
     public DriveTrain() {
         
         // Pass robotmap into DI constructor
-        this(RobotMap.leftBack, RobotMap.rightBack, RobotMap.leftFront, RobotMap.rightFront, OI.joystick);
+        this(RobotMap.leftBack, RobotMap.rightBack, RobotMap.leftFront, RobotMap.rightFront, Robot.m_oi.joystick);
 
     }
     
