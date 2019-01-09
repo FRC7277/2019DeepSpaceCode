@@ -16,7 +16,7 @@ import frc.robot.Robot;
 public class MainDrive extends Command {
   public MainDrive() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.m_subsystem);
+    requires(Robot.m_drivetrain);
   }
 
   // Called just before this Command runs the first time
