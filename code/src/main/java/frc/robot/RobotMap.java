@@ -26,4 +26,8 @@ public class RobotMap {
     public static int leftFront = 1;
     public static int rightBack = 2;
     public static int rightFront = 3;
+    
+    // Joystick number
+    public static int joystick = 1;
+    
 }
