@@ -8,7 +8,9 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import frc.robot.RobotMap;
 
 /**
@@ -17,11 +19,18 @@ import frc.robot.RobotMap;
 public class DriveTrain extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    TalonSRX leftBack = new TalonSRX(RobotMap.leftBack);
-    TalonSRX rightBack = new TalonSRX(RobotMap.rightBack);
-    TalonSRX leftFront = new TalonSRX(RobotMap.leftFront);
-    TalonSRX rightFront = new TalonSRX(RobotMap.rightFront);
+    WPI_TalonSRX leftBack = new WPI_TalonSRX(RobotMap.leftBack);
+    WPI_TalonSRX rightBack = new WPI_TalonSRX(RobotMap.rightBack);
+    WPI_TalonSRX leftFront = new WPI_TalonSRX(RobotMap.leftFront);
+    WPI_TalonSRX rightFront = new WPI_TalonSRX(RobotMap.rightFront);
+    SpeedControllerGroup left = new SpeedControllerGroup(leftBack, leftFront);
+    SpeedControllerGroup right = new SpeedControllerGroup(rightBack, rightFront);
+    private DifferentialDrive m_drive;
 
+    public DriveTrain () {
+      m_drive = new DifferentialDrive(left, right);
+
+    }
     @Override
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
