@@ -12,8 +12,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import org.opencv.core.Mat;
@@ -32,6 +35,7 @@ import edu.wpi.cscore.UsbCamera;
  */
 public class Robot extends TimedRobot {
     public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
+    public static DriveTrain m_drivetrain = new DriveTrain();
     public static OI m_oi;
 
     Command m_autonomousCommand;
