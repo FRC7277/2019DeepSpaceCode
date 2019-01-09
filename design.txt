@@ -2,6 +2,8 @@ Design Document:
 
 Control Scheme:
 Drive Train
+Elevator Mechanism
+Ramp Mechanism
 
 Sensors:
 Reflective tape sensor
