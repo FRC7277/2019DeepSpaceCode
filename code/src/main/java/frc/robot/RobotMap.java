@@ -22,9 +22,9 @@ public class RobotMap {
     // public static int rangefinderModule = 1;
 
     // Drive train motors
-    public static int leftBack = 0;
-    public static int leftFront = 1;
-    public static int rightBack = 2;
+    public static int leftBack = 2;
+    public static int leftFront = 4;
+    public static int rightBack = 1;
     public static int rightFront = 3;
     
     // Joystick number
