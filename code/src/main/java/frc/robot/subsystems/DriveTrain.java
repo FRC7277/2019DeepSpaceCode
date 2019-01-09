@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.RobotMap;
 
 /**
@@ -33,10 +34,14 @@ public class DriveTrain extends Subsystem {
     // Define differential drive
     private DifferentialDrive m_drive;
     
+    // Define joystick
+    private Joystick joy;
+    
     /**
      * Takes 4 port integers, left-back, right-back, left-front, right-front
+     * Takes a joystick object to pass to the default JoystickDrive command
      */
-    public DriveTrain(int lb, int rb, int lf, int rf) {
+    public DriveTrain(int lb, int rb, int lf, int rf, Joystick joy) {
         
         // Create Motor objects using parameters
         this.leftBack = new WPI_TalonSRX(lb);
@@ -51,6 +56,9 @@ public class DriveTrain extends Subsystem {
         // Create diff drive
         this.m_drive = new DifferentialDrive(left, right);
         
+        // Reference joystick
+        this.joy = joy;
+        
     }
     
     /**
@@ -59,7 +67,7 @@ public class DriveTrain extends Subsystem {
     public DriveTrain() {
         
         // Pass robotmap into DI constructor
-        this(RobotMap.leftBack, RobotMap.rightBack, RobotMap.leftFront, RobotMap.rightFront);
+        this(RobotMap.leftBack, RobotMap.rightBack, RobotMap.leftFront, RobotMap.rightFront, RobotMap.joystick);
 
     }
     
@@ -74,5 +82,7 @@ public class DriveTrain extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
+        
+        setDefaultCommand(new JoystickDrive(this.joy));
     }
 }
