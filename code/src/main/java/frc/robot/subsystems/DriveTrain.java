@@ -10,20 +10,21 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import frc.robot.RobotMap;
-/**
- * An example subsystem.  You can replace me with your own Subsystem.
- */
-public class DriveTrain extends Subsystem{
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
-  TalonSRX leftBack = new TalonSRX(RobotMap.leftBack);
-  TalonSRX rightBack = new TalonSRX(RobotMap.rightBack);
-  TalonSRX leftFront = new TalonSRX(RobotMap.leftFront);
-  TalonSRX rightFront = new TalonSRX(RobotMap.rightFront);
 
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-  }
+/**
+ * An example subsystem. You can replace me with your own Subsystem.
+ */
+public class DriveTrain extends Subsystem {
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
+    TalonSRX leftBack = new TalonSRX(RobotMap.leftBack);
+    TalonSRX rightBack = new TalonSRX(RobotMap.rightBack);
+    TalonSRX leftFront = new TalonSRX(RobotMap.leftFront);
+    TalonSRX rightFront = new TalonSRX(RobotMap.rightFront);
+
+    @Override
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        // setDefaultCommand(new MySpecialCommand());
+    }
 }
