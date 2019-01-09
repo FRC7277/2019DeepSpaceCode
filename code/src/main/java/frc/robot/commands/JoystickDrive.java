@@ -24,7 +24,7 @@ public class JoystickDrive extends Command {
     requires(Robot.m_drivetrain);
     
     // Reference passed joystick
-    this.joy = joy
+    this.joy = joy;
     
   }
 
