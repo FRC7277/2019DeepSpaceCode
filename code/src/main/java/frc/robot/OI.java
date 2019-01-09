@@ -44,5 +44,8 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
   
   public Joystick joystick = new Joystick(RobotMap.joystick);
+  public Joystick getJoystick() {
+    return joystick;
+}
   
 }
