@@ -7,17 +7,22 @@
 
 package frc.robot;
 
+// Import Robot superclass
 import edu.wpi.first.wpilibj.TimedRobot;
+
+// Import command and schedular classes
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+
+// Import smartdashboard classes
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
+// Import subsystems
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.ElevatorLift;
 
+// Import camera stuff
 import edu.wpi.first.cameraserver.CameraServer;
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
@@ -34,13 +39,17 @@ import edu.wpi.cscore.UsbCamera;
  * project.
  */
 public class Robot extends TimedRobot {
-    public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
+
+    // Create OI object
     public static OI m_oi = new OI();
+
+    // Create subsystem objects
     public static DriveTrain m_drivetrain = new DriveTrain();
+    public static ElevatorLift elevator = new ElevatorLift();
 
     Command m_autonomousCommand;
+    // Create dashboard choosers
     SendableChooser<Command> m_chooser = new SendableChooser<>();
-
     SendableChooser<String> vc_chooser = new SendableChooser<>();
 
     /**
@@ -50,8 +59,7 @@ public class Robot extends TimedRobot {
     @Override
     public void robotInit() {
         // Setup auto chooser
-        m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-        m_chooser.addOption("Fancy Auto", new ExampleCommand());
+        //m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
         // chooser.addOption("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", m_chooser);
 

@@ -37,7 +37,7 @@ public class JoystickDrive extends Command {
   @Override
   protected void execute() {
     
-    Robot.m_drivetrain.arcadeDriving(this.joy);
+    Robot.m_drivetrain.arcadeDrive(this.joy);
     
   }
 
