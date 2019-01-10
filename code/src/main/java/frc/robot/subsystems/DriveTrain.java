@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Joystick;
 
 import frc.robot.Robot;
+import frc.robot.OI;
 import frc.robot.RobotMap;
 import frc.robot.commands.JoystickDrive;
 
@@ -92,6 +93,7 @@ public class DriveTrain extends Subsystem {
     }
   
       public void arcadeDrive(Joystick joy){
-          m_drive.arcadeDrive(-joy.getY(), joy.getZ());
+          m_drive.arcadeDrive(OI.scaleJoystickInput(-joy.getY()), 
+                              OI.scaleJoystickInput(joy.getZ()));
     }
 }
