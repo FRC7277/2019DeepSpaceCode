@@ -77,9 +77,7 @@ public class DriveTrain extends Subsystem {
     /**
      * Accessor for the differential drive
      */
-    public DifferentialDrive getDrive() {
-      return this.m_drive;   
-    }
+    
     
     @Override
     public void initDefaultCommand() {
@@ -88,4 +86,12 @@ public class DriveTrain extends Subsystem {
         
         setDefaultCommand(new JoystickDrive(this.joy));
     }
+
+    public DifferentialDrive getDrive() {
+        return this.m_drive;   
+      }
+  
+      public void arcadeDriving(Joystick joy){
+          m_drive.arcadeDrive(-joy.getY(), joy.getX());
+      }
 }
