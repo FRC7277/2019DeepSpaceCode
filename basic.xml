@@ -31,16 +31,5 @@
 	</widget>
 </dashboard>
 <live-window>
-	<widget field="Ungrouped" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
-		<location x="12" y="30"/>
-	</widget>
-	<widget field="ExampleSubsystem" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
-		<location x="11" y="16"/>
-	</widget>
-	<widget field="DriveTrain" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
-		<location x="29" y="14"/>
-	</widget>
 </live-window>
-	<hidden field="CT"/>
-	<hidden field="Put"/>
 </xml>
