@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
+import frc.robot.commands.ControlElevator;
+
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 /**
@@ -73,7 +76,7 @@ public class ElevatorLift extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
         
-        //setDefaultCommand(new JoystickDrive(this.joy));
+        setDefaultCommand(new ControlElevator(Robot.m_oi.getController()));
     }
 
 }

@@ -9,13 +9,28 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+import edu.wpi.first.wpilibj.GenericHID;
+
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class ControlElevator extends Command {
-  public ControlElevator() {
+
+  private GenericHID controller;
+
+  public ControlElevator(GenericHID controller) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.elevator);
+
+    this.controller = controller;
+
+  }
+
+  public ControlElevator() {
+
+    this(Robot.m_oi.getController());
+
   }
 
   // Called just before this Command runs the first time
@@ -26,6 +41,18 @@ public class ControlElevator extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+
+    // Reference POV Value
+    int value = this.controller.getPOV();
+
+    if (value <= 90 || value >= 270) {
+      // Up direction
+      Robot.elevator.setSpeed(RobotMap.elevatorSpeed);
+    } else {
+      // Down direction
+      Robot.elevator.setSpeed(-RobotMap.elevatorSpeed);
+    }
+
   }
 
   // Make this return true when this Command no longer needs to run execute()

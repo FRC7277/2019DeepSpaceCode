@@ -8,6 +8,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+
 import frc.robot.RobotMap;
 
 /**
@@ -45,7 +47,12 @@ public class OI {
   
   private Joystick joystick = new Joystick(RobotMap.joystick);
   public Joystick getJoystick() {
-    return joystick;
+    return this.joystick;
+  }
+
+  private XboxController controller = new XboxController(RobotMap.controller);
+  public XboxController getController() {
+    return this.controller;
   }
 
   /**

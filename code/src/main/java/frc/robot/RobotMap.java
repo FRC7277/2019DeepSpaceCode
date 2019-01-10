@@ -29,6 +29,7 @@ public class RobotMap {
     
     // Joystick number
     public static final int joystick = 0;
+    public static final int controller = 1;
 
     // Elevator lift motors
     public static final int leftElevator = 5;
