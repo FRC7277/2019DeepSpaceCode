@@ -22,12 +22,19 @@ public class RobotMap {
     // public static int rangefinderModule = 1;
 
     // Drive train motors
-    public static int leftBack = 2;
-    public static int leftFront = 4;
-    public static int rightBack = 1;
-    public static int rightFront = 3;
+    public static final int leftBack = 2;
+    public static final int leftFront = 4;
+    public static final int rightBack = 1;
+    public static final int rightFront = 3;
     
     // Joystick number
-    public static int joystick = 0;
+    public static final int joystick = 0;
+
+    // Elevator lift motors
+    public static final int leftElevator = 5;
+    public static final int rightElevator = 6;
+
+    // Elevator speed constant
+    public static final double elevatorSpeed = 1.0;
     
 }
