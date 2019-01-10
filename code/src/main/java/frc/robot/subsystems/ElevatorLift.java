@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import frc.robot.RobotMap;
 
 /**
- * An example subsystem. You can replace me with your own Subsystem.
+ * Elevator subsystem.
  */
 public class ElevatorLift extends Subsystem {
     // Put methods for controlling this subsystem
