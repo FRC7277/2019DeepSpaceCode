@@ -35,8 +35,8 @@ import edu.wpi.cscore.UsbCamera;
  */
 public class Robot extends TimedRobot {
     public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
+    public static OI m_oi = new OI();
     public static DriveTrain m_drivetrain = new DriveTrain();
-    public static OI m_oi;
 
     Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -49,7 +49,6 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
-        m_oi = new OI();
         // Setup auto chooser
         m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
         m_chooser.addOption("Fancy Auto", new ExampleCommand());
