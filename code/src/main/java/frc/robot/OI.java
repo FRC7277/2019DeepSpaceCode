@@ -53,11 +53,16 @@ public class OI {
    * smoother and more controlled movement vectors
    */
   public static double scaleJoystickInput(double input) {
+    /*
     if (input >= 0) {
       return (input * input);
     } else {
       return (input * -input);
     }
+    */
+
+    return input;
+
   }
   
 }
