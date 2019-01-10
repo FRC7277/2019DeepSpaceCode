@@ -92,6 +92,6 @@ public class DriveTrain extends Subsystem {
     }
   
       public void arcadeDriving(Joystick joy){
-          m_drive.arcadeDrive(-joy.getY(), joy.getX());
+          m_drive.arcadeDrive(-joy.getY(), joy.getZ());
     }
 }
