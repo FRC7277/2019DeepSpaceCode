@@ -70,7 +70,7 @@ public class DriveTrain extends Subsystem {
     public DriveTrain() {
         
         // Pass robotmap into DI constructor
-        this(RobotMap.leftBack, RobotMap.rightBack, RobotMap.leftFront, RobotMap.rightFront, Robot.m_oi.joystick);
+        this(RobotMap.leftBack, RobotMap.rightBack, RobotMap.leftFront, RobotMap.rightFront, Robot.m_oi.getJoystick());
 
     }
     
