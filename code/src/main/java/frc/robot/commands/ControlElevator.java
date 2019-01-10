@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import edu.wpi.first.wpilibj.GenericHID;
 
@@ -45,12 +46,18 @@ public class ControlElevator extends Command {
     // Reference POV Value
     int value = this.controller.getPOV();
 
-    if (value <= 90 || value >= 270) {
+    if ((value >= 0 && value < 90) || (value > 270 && value <= 360)) {
       // Up direction
       Robot.elevator.setSpeed(RobotMap.elevatorSpeed);
-    } else {
+      SmartDashboard.putString("Elevator", "Up");
+    } else if ((value > 90 && value < 270)) {
       // Down direction
       Robot.elevator.setSpeed(-RobotMap.elevatorSpeed);
+      SmartDashboard.putString("Elevator", "Down");
+    } else {
+      // Stopped
+      Robot.elevator.setSpeed(0);
+      SmartDashboard.putString("Elevator", "Stop");
     }
 
   }
