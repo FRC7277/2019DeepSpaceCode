@@ -1,11 +1,5 @@
 <xml version="1.0">
 <dashboard>
-	<widget field="Put" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="107"/>
-	</widget>
-	<widget field="CT" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="86"/>
-	</widget>
 	<widget field="Camera mode" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
 		<location x="202" y="19"/>
 	</widget>
@@ -38,10 +32,15 @@
 </dashboard>
 <live-window>
 	<widget field="Ungrouped" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
-		<location x="0" y="23"/>
+		<location x="12" y="30"/>
 	</widget>
 	<widget field="ExampleSubsystem" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
-		<location x="0" y="0"/>
+		<location x="11" y="16"/>
+	</widget>
+	<widget field="DriveTrain" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<location x="29" y="14"/>
 	</widget>
 </live-window>
+	<hidden field="CT"/>
+	<hidden field="Put"/>
 </xml>
