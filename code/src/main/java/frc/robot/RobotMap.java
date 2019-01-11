@@ -37,5 +37,9 @@ public class RobotMap {
 
     // Elevator speed constant
     public static final double elevatorSpeed = 1.0;
+
+    // Pneumatic
+    public static final int solenoid = 0;
+    public static final double solenoidTime = 0.5;
     
 }
