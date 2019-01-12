@@ -14,17 +14,23 @@ import frc.robot.RobotMap;
 
 public class LaunchHatch extends Command {
 
-  public LaunchHatch() {
+  public LaunchHatch(double time) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.hatcher);
+    this.time = time;
+
+  }
+
+  public LaunchHatch() {
+    this(RobotMap.solenoidTime);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
 
-    setTimeout(RobotMap.solenoidTime);
+    setTimeout(this.time);
 
     Robot.hatcher.set(true);
     
