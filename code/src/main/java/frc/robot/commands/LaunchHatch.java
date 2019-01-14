@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Robot;
 import frc.robot.RobotMap;
@@ -33,6 +34,7 @@ public class LaunchHatch extends Command {
     setTimeout(this.time);
 
     Robot.hatcher.set(true);
+    SmartDashboard.putString("launch", "active");
     
   }
 
@@ -51,6 +53,7 @@ public class LaunchHatch extends Command {
   @Override
   protected void end() {
     Robot.hatcher.set(false);
+    SmartDashboard.putString("launch", "off");
   }
 
   // Called when another command which requires one or more of the same
