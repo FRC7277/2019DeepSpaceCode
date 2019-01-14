@@ -9,6 +9,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.Button;
+import edu.wpi.first.wpilibj.JoystickButton;
 
 import frc.robot.RobotMap;
 
@@ -44,16 +46,6 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
-  
-  private Joystick joystick = new Joystick(RobotMap.joystick);
-  public Joystick getJoystick() {
-    return this.joystick;
-  }
-
-  private XboxController controller = new XboxController(RobotMap.controller);
-  public XboxController getController() {
-    return this.controller;
-  }
 
   /**
    * Scales a double between -1 and 1 (inclusive) to provide
@@ -70,6 +62,23 @@ public class OI {
 
     return input;
 
+  }
+
+  private Joystick joystick = new Joystick(RobotMap.joystick);
+  private XboxController controller = new XboxController(RobotMap.controller);
+
+  private Button launchButton = new JoystickButton(controller, RobotMap.launchButton);
+
+  public OI() {
+    launchButton.whenPressed(new LaunchHatch());
+  }
+
+  public Joystick getJoystick() {
+    return this.joystick;
+  }
+
+  public XboxController getController() {
+    return this.controller;
   }
   
 }
