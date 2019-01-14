@@ -13,7 +13,7 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class LaunchHatch extends Command {
-
+  private double time;
   public LaunchHatch(double time) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);

@@ -9,10 +9,11 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.Button;
-import edu.wpi.first.wpilibj.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import frc.robot.RobotMap;
+import frc.robot.commands.LaunchHatch;;
 
 /**
  * This class is the glue that binds the controls on the physical operator
