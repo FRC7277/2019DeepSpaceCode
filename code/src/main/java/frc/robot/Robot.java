@@ -79,8 +79,8 @@ public class Robot extends TimedRobot {
             // Reference USB camera connected to RIO (and also start automatic capture)
             UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
             // Define resolution for the camera
-            camera.setResolution(640, 480);
-            camera.setFPS(30);
+            camera.setResolution(426, 240);
+            camera.setFPS(25);
 
             // System.out.println("#&# Referenced camera "+camera);
 
