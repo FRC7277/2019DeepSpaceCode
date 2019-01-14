@@ -35,6 +35,10 @@ public class RobotMap {
     public static final int leftElevator = 5;
     public static final int rightElevator = 6;
 
+    // Intake motors
+    public static final int rightIntake = 7;
+    public static final int leftIntake = 8;
+
     // Elevator speed constant
     public static final double elevatorSpeed = 1.0;
 
