@@ -41,6 +41,6 @@ public class RobotMap {
     // Pneumatic
     public static final int solenoid = 0;
     public static final double solenoidTime = 0.5;
-    public static final int launchButton = -1;
+    public static final int launchButton = 3; //B button
     
 }
