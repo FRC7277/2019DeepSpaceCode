@@ -41,13 +41,16 @@ import edu.wpi.cscore.UsbCamera;
  */
 public class Robot extends TimedRobot {
 
+    // Create hatch launcher object (Has to be before for OI for button link to command)
+    public static HatchPlacer hatcher = new HatchPlacer();
+
     // Create OI object
     public static OI m_oi = new OI();
 
     // Create subsystem objects
     public static DriveTrain m_drivetrain = new DriveTrain();
     public static ElevatorLift elevator = new ElevatorLift();
-    public static HatchPlacer hatcher = new HatchPlacer();
+    
 
     Command m_autonomousCommand;
     // Create dashboard choosers
