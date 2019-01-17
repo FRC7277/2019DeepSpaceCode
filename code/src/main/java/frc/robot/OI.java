@@ -68,7 +68,7 @@ public class OI {
   private Joystick joystick = new Joystick(RobotMap.joystick);
   private XboxController controller = new XboxController(RobotMap.controller);
 
-  private Button launchButton = new JoystickButton(controller, RobotMap.launchButton);
+  private Button launchButton = new JoystickButton(controller, RobotMap.bButton);
 
   public OI() {
     launchButton.whenPressed(new LaunchHatch());
