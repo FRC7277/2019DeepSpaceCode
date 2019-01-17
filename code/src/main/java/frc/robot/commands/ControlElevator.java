@@ -10,6 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID;
 
 import frc.robot.Robot;
@@ -17,9 +18,9 @@ import frc.robot.RobotMap;
 
 public class ControlElevator extends Command {
 
-  private GenericHID controller;
+  private XboxController controller;
 
-  public ControlElevator(GenericHID controller) {
+  public ControlElevator(XboxController controller) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.elevator);
@@ -43,6 +44,11 @@ public class ControlElevator extends Command {
   @Override
   protected void execute() {
 
+    double vector = this.controller.getY(GenericHID.Hand.kLeft));
+
+    SmartDashboard.putNumber("Elevator", vector);
+    Robot.elevator.setSpeed(vector);
+    /*
     // Reference POV Value
     int value = this.controller.getPOV();
 
@@ -59,7 +65,7 @@ public class ControlElevator extends Command {
       Robot.elevator.setSpeed(0);
       SmartDashboard.putString("Elevator", "Stop");
     }
-
+    //*/
   }
 
   // Make this return true when this Command no longer needs to run execute()
