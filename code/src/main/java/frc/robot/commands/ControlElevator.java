@@ -44,7 +44,7 @@ public class ControlElevator extends Command {
   @Override
   protected void execute() {
 
-    double vector = this.controller.getY(GenericHID.Hand.kLeft));
+    double vector = this.controller.getY(GenericHID.Hand.kLeft);
 
     SmartDashboard.putNumber("Elevator", vector);
     Robot.elevator.setSpeed(vector);

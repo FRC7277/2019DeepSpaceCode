@@ -32,6 +32,9 @@ import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 
+// Import GRIP Vision processing
+import frc.robot.GripPipeline;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -51,6 +54,8 @@ public class Robot extends TimedRobot {
     public static DriveTrain m_drivetrain = new DriveTrain();
     public static ElevatorLift elevator = new ElevatorLift();
     
+    //Create GripPipeline Object
+    public static GripPipeline pipeline = new GripPipeline();
 
     Command m_autonomousCommand;
     // Create dashboard choosers
@@ -122,7 +127,7 @@ public class Robot extends TimedRobot {
                         miscOutput.putFrame(source);
                     }
                 }
-
+                pipeline.process(source);
             }
 
         }).start();
