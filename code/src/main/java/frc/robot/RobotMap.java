@@ -39,12 +39,20 @@ public class RobotMap {
     public static final int rightIntake = 7;
     public static final int leftIntake = 8;
 
+    // Intake time
+    public static final double intakeTime = 1;
+
     // Elevator speed constant
     public static final double elevatorSpeed = 1.0;
 
     // Pneumatic
     public static final int solenoid = 0;
     public static final double solenoidTime = 0.5;
+
+    // Button mappings
+    public static final int aButton = 1;
     public static final int bButton = 2; //B button
+    public static final int xButton = 3;
+    public static final int yButton = 4;
     
 }

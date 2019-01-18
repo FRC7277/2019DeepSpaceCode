@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ElevatorLift;
 import frc.robot.subsystems.HatchPlacer;
+import frc.robot.subsystems.Intake;
 
 // Import camera stuff
 import edu.wpi.first.cameraserver.CameraServer;
@@ -50,6 +51,7 @@ public class Robot extends TimedRobot {
     // Create subsystem objects
     public static DriveTrain m_drivetrain = new DriveTrain();
     public static ElevatorLift elevator = new ElevatorLift();
+    public static Intake intake = new Intake();
     
 
     Command m_autonomousCommand;
