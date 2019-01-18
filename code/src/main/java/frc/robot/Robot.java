@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ElevatorLift;
 import frc.robot.subsystems.HatchPlacer;
+import frc.robot.subsystems.Intake;
 
 // Import camera stuff
 import edu.wpi.first.cameraserver.CameraServer;
@@ -44,13 +45,14 @@ import frc.robot.GripPipeline;
  */
 public class Robot extends TimedRobot {
 
-    // Create hatch launcher object (Has to be before for OI for button link to command)
+    // Create subsystems used by buttons (need to be created before OI)
     public static HatchPlacer hatcher = new HatchPlacer();
+    public static Intake intake = new Intake();
 
     // Create OI object
     public static OI m_oi = new OI();
 
-    // Create subsystem objects
+    // Create subsystem that use buttons/joysticks (need to be created after OI)
     public static DriveTrain m_drivetrain = new DriveTrain();
     public static ElevatorLift elevator = new ElevatorLift();
     
@@ -68,18 +70,11 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
-        // Setup auto chooser
-        //m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-        // chooser.addOption("My Auto", new MyAutoCommand());
-        SmartDashboard.putData("Auto mode", m_chooser);
 
         // Setup camera chooser
         vc_chooser.setDefaultOption("Normal", "USB Camera 0");
         vc_chooser.addOption("Gray", "Gray");
         SmartDashboard.putData("Camera mode", vc_chooser);
-
-        // Put camera to dashboard
-        // CameraServer.getInstance().startAutomaticCapture(0);
 
         // Create thread for processing camera (asynchrous)
         new Thread(() -> {
@@ -174,19 +169,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void autonomousInit() {
-        m_autonomousCommand = m_chooser.getSelected();
 
-        /*
-         * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
-         * switch(autoSelected) { case "My Auto": autonomousCommand = new
-         * MyAutoCommand(); break; case "Default Auto": default: autonomousCommand = new
-         * ExampleCommand(); break; }
-         */
-
-        // schedule the autonomous command (example)
-        if (m_autonomousCommand != null) {
-            m_autonomousCommand.start();
-        }
     }
 
     /**
@@ -199,13 +182,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopInit() {
-        // This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
-        if (m_autonomousCommand != null) {
-            m_autonomousCommand.cancel();
-        }
+        //Remember to cancel an autonomous command if we run one
     }
 
     /**

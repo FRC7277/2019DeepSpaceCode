@@ -10,75 +10,52 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID;
-
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class ControlElevator extends Command {
-
-  private XboxController controller;
-
-  public ControlElevator(XboxController controller) {
+public class PowerIntake extends Command {
+  private double time;
+  private double power;
+  public PowerIntake(double time, double power) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.elevator);
-
-    this.controller = controller;
+    requires(Robot.intake);
+    this.time = time;
+    this.power = power;
 
   }
 
-  public ControlElevator() {
-
-    this(Robot.m_oi.getController());
-
+  public PowerIntake(double power) {
+    this(RobotMap.intakeTime, power);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+
+    setTimeout(this.time);
+
+    Robot.intake.setSpeed(this.power);
+    SmartDashboard.putString("intake", Double.toString(this.power));;
+    
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    double vector = -this.controller.getY(GenericHID.Hand.kLeft);
-
-    //SmartDashboard.putNumber("Elevator", vector);
-    SmartDashboard.putString("Elevator", Double.toString(vector));
-    Robot.elevator.setSpeed(vector);
-    /*
-    // Reference POV Value
-    int value = this.controller.getPOV();
-
-    if ((value >= 0 && value < 90) || (value > 270 && value <= 360)) {
-      // Up direction
-      Robot.elevator.setSpeed(RobotMap.elevatorSpeed);
-      SmartDashboard.putString("Elevator", "Up");
-    } else if ((value > 90 && value < 270)) {
-      // Down direction
-      Robot.elevator.setSpeed(-RobotMap.elevatorSpeed);
-      SmartDashboard.putString("Elevator", "Down");
-    } else {
-      // Stopped
-      Robot.elevator.setSpeed(0);
-      SmartDashboard.putString("Elevator", "Stop");
-    }
-    //*/
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return isTimedOut();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.elevator.setSpeed(0.0);
+    Robot.intake.setSpeed(0.0);
+    SmartDashboard.putString("intake", "0");
   }
 
   // Called when another command which requires one or more of the same

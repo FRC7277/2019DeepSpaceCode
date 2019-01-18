@@ -1,5 +1,14 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="Drive Y:" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="120"/>
+	</widget>
+	<widget field="Drive Z:" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="99"/>
+	</widget>
+	<widget field="Drive X:" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="78"/>
+	</widget>
 	<widget field="launch" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="25" y="57"/>
 	</widget>
@@ -41,22 +50,7 @@
 </dashboard>
 <live-window>
 	<widget field="DriveTrain" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
-		<location x="0" y="69"/>
-	</widget>
-	<widget field="Ungrouped" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
-		<widget field="SpeedControllerGroup[3]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
-			<location x="6" y="16"/>
-			<height>45</height>
-			<width>297</width>
-		</widget>
-		<widget field="Solenoid[0,0]" type="Solenoid" class="edu.wpi.first.smartdashboard.livewindow.elements.DigitalOutputController">
-			<location x="92" y="61"/>
-			<height>23</height>
-			<width>123</width>
-		</widget>
-		<location x="0" y="46"/>
-		<width>309</width>
-		<height>90</height>
+		<location x="0" y="137"/>
 	</widget>
 	<widget field="ElevatorLift" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
 		<location x="0" y="23"/>

@@ -13,7 +13,8 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import frc.robot.RobotMap;
-import frc.robot.commands.LaunchHatch;;
+import frc.robot.commands.LaunchHatch;
+import frc.robot.commands.PowerIntake;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -70,8 +71,14 @@ public class OI {
 
   private Button launchButton = new JoystickButton(controller, RobotMap.bButton);
 
+  private Button inButton = new JoystickButton(controller, RobotMap.xButton);
+  private Button outButton = new JoystickButton(controller, RobotMap.yButton);
+
   public OI() {
     launchButton.whenPressed(new LaunchHatch());
+
+    inButton.whenPressed(new PowerIntake(-1));
+    outButton.whenPressed(new PowerIntake(1));
   }
 
   public Joystick getJoystick() {
