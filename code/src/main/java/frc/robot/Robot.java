@@ -35,6 +35,8 @@ import edu.wpi.cscore.UsbCamera;
 
 // Import GRIP Vision processing
 import frc.robot.GripPipeline;
+import org.opencv.core.MatOfPoint;
+import java.util.ArrayList;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -78,7 +80,7 @@ public class Robot extends TimedRobot {
 
         // Create thread for processing camera (asynchrous)
         new Thread(() -> {
-
+            ArrayList<MatOfPoint> contourOuput;
             // Reference USB camera connected to RIO (and also start automatic capture)
             UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
             // Define resolution for the camera
@@ -123,6 +125,7 @@ public class Robot extends TimedRobot {
                     }
                 }
                 pipeline.process(source);
+                contourOuput = pipeline.filterContoursOutput();
             }
 
         }).start();
