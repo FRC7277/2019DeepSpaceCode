@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Robot;
 
@@ -38,6 +39,10 @@ public class JoystickDrive extends Command {
   protected void execute() {
     
     Robot.m_drivetrain.arcadeDrive(this.joy);
+
+    SmartDashboard.putString("Drive X:", Double.toString(this.joy.getX()));
+    SmartDashboard.putString("Drive Z:", Double.toString(this.joy.getZ()));
+    SmartDashboard.putString("Drive Y:", Double.toString(this.joy.getY()));
     
   }
 
