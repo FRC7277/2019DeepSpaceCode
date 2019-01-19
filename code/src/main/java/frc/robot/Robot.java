@@ -14,29 +14,15 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
-// Import smartdashboard classes
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 // Import subsystems
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ElevatorLift;
 import frc.robot.subsystems.HatchPlacer;
 import frc.robot.subsystems.Intake;
 
-// Import camera stuff
-import edu.wpi.first.cameraserver.CameraServer;
-import org.opencv.core.Mat;
-import org.opencv.imgproc.Imgproc;
-
-import edu.wpi.cscore.CvSink;
-import edu.wpi.cscore.CvSource;
-import edu.wpi.cscore.UsbCamera;
-
-// Import GRIP Vision processing
-import frc.robot.GripPipeline;
-import org.opencv.core.MatOfPoint;
-import java.util.ArrayList;
+// Import utils
+import frc.robot.utils.GripPipeline;
+import frc.robot.utils.VisionThread;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -61,10 +47,10 @@ public class Robot extends TimedRobot {
     //Create GripPipeline Object
     public static GripPipeline pipeline = new GripPipeline();
 
+    // Create VisionThread
+    public static VisionThread visionProcess = new VisionThread();
+
     Command m_autonomousCommand;
-    // Create dashboard choosers
-    SendableChooser<Command> m_chooser = new SendableChooser<>();
-    SendableChooser<String> vc_chooser = new SendableChooser<>();
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -73,62 +59,8 @@ public class Robot extends TimedRobot {
     @Override
     public void robotInit() {
 
-        // Setup camera chooser
-        vc_chooser.setDefaultOption("Normal", "USB Camera 0");
-        vc_chooser.addOption("Gray", "Gray");
-        SmartDashboard.putData("Camera mode", vc_chooser);
-
-        // Create thread for processing camera (asynchrous)
-        new Thread(() -> {
-            ArrayList<MatOfPoint> contourOuput;
-            // Reference USB camera connected to RIO (and also start automatic capture)
-            UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-            // Define resolution for the camera
-            camera.setResolution(426, 240);
-            camera.setFPS(25);
-
-            // System.out.println("#&# Referenced camera "+camera);
-
-            // Create a CvSink pulling from the camera
-            CvSink cvSink = CameraServer.getInstance().getVideo();
-            // Create cv output linked to SmartDashboard component 'Gray'
-            CvSource outputStream = CameraServer.getInstance().putVideo("Gray", 640, 480);
-            
-            // Create misc output
-            CvSource miscOutput = CameraServer.getInstance().putVideo("Misc", 640, 480);
-
-            // Create mats (matrice capable of containing images) for source and output
-            // Source stores a raw frame from cvSink
-            Mat source = new Mat();
-            // Output provides container to put processed frame in
-            Mat output = new Mat();
-
-            // Create choice string holder
-            String choice;
-
-            // While loop processes until the thread is interrupted
-            while (!Thread.interrupted()) {
-                // Frame is taken from cvSink and put into source
-                if (cvSink.grabFrame(source) != 0) {
-                    // Source is proccessed, and the result is put in output
-                    // Current processing is turning to grayscale (mainly for testing)
-                    Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
-                    // Output is pushed into the output stream (linked to dashboard)
-                    outputStream.putFrame(output);
-
-                    //Ouput misc
-                    choice = vc_chooser.getSelected();
-                    if (choice.equals("Gray")) {
-                        miscOutput.putFrame(output);
-                    } else {
-                        miscOutput.putFrame(source);
-                    }
-                }
-                pipeline.process(source);
-                contourOuput = pipeline.filterContoursOutput();
-            }
-
-        }).start();
+        // Create thread for processing camera vision (asynchrous)
+        visionProcess.start();
     }
 
     /**
