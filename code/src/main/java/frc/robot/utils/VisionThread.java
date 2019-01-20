@@ -62,6 +62,9 @@ public class VisionThread extends Thread {
         // Create choice string holder
         String choice;
 
+        //Create pipeline object
+        GripPipeline pipeline = new GripPipeline();
+
         // While loop processes until the thread is interrupted
         while (!Thread.interrupted()) {
 
@@ -81,8 +84,9 @@ public class VisionThread extends Thread {
                     miscOutput.putFrame(source);
                 }
                 
-                // Operate GRIP vision pipeline
+                //Passing the image mat into the GRIP pipeline
                 pipeline.process(source);
+                //Passing the output into the Array
                 contourOuput = pipeline.filterContoursOutput();
             }
 
