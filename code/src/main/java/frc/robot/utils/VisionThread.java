@@ -10,6 +10,7 @@ import edu.wpi.first.cameraserver.CameraServer;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
 import org.opencv.imgproc.Imgproc;
+import org.opencv.core.Rect;
 
 // Import video stream objects
 import edu.wpi.cscore.CvSink;
@@ -88,6 +89,8 @@ public class VisionThread extends Thread {
                 pipeline.process(source);
                 //Passing the output into the Array
                 contourOuput = pipeline.filterContoursOutput();
+
+                Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
             }
 
         }
