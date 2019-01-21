@@ -1,0 +1,14 @@
+Design Document:
+
+Control Scheme:
+Drive Train
+Elevator Mechanism
+Ramp Mechanism
+
+Sensors:
+Reflective tape sensor
+Webcam
+
+Autonomous:
+Not neccesary
+Webcam for video input (due to sandstorm)
