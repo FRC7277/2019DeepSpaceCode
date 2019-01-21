@@ -50,7 +50,6 @@ public class Robot extends TimedRobot {
     // Create VisionThread
     public static VisionThread visionProcess = new VisionThread();
 
-    Command m_autonomousCommand;
 
     /**
      * This function is run when the robot is first started up and should be used
