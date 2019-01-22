@@ -30,6 +30,7 @@ public class VisionThread extends Thread {
 
     //Creating the double centerX in order to compute for the center of the object
     private double centerX = 0.0;
+
     @Override
     public void run() {
 
@@ -70,7 +71,6 @@ public class VisionThread extends Thread {
         //Create pipeline object
         GripPipeline pipeline = new GripPipeline();
        
-
         // While loop processes until the thread is interrupted
         while (!Thread.interrupted()) {
             
@@ -89,19 +89,20 @@ public class VisionThread extends Thread {
                 } else {
                     miscOutput.putFrame(source);
                 }
+
                 //Passing the image mat into the GRIP pipeline
                 pipeline.process(source);
                 //Passing the output into the Array
                 contourOuput = pipeline.filterContoursOutput();
+
                 //Making a Seperate if statement checking for 
                 //if there is something within the Contour Output
                 if (!pipeline.filterContoursOutput().isEmpty()){
-                Rect r = Imgproc.boundingRect(contourOuput.get(0));
-                synchronized(Robot.imgLock){
+                    
+                    Rect r = Imgproc.boundingRect(contourOuput.get(0));
                     //Computing for the X value center by getting the 
                     //X value in the conner and dividing it in two
                     centerX = r.x + (r.width / 2);
-                }
                 }
             }
             
