@@ -50,6 +50,9 @@ public class Robot extends TimedRobot {
     // Create VisionThread
     public static VisionThread visionProcess = new VisionThread();
 
+    //Creating the syncronizing object
+    public static final Object imgLock = new Object();
+
 
     /**
      * This function is run when the robot is first started up and should be used
