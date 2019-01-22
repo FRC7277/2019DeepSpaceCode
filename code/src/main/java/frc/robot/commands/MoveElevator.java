@@ -15,23 +15,28 @@ import frc.robot.RobotMap;
 
 public class MoveElevator extends Command {
 
-  private DigitalInput limitSwitch;
+  private DigitalInput endSwitch;
   private double power;
   private double timeout;
 
-  public MoveElevator(double power, int switchPort, double timeout) {
+  public MoveElevator(int startSwitch, int endSwitch, double timeout) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.elevator);
 
-    this.limitSwitch = new DigitalInput(switchPort);
-    this.power = power;
+    // Create digital input
+    this.endSwitch = new DigitalInput(endSwitch);
+
+    //Reference elevator speed
+    this.power = RobotMap.elevatorSpeed * ((endSwitch > startSwitch) ? 1 : -1);
+
+    // Reference timeout
     this.timeout = timeout;
 
   }
 
-  public MoveElevator(double power, int switchPort) {
-    this(power, switchPort, RobotMap.elevatorTimeout);
+  public MoveElevator(int startSwitch, int endSwitch) {
+    this(startSwitch, endSwitch, RobotMap.elevatorTimeout);
   }
 
   // Called just before this Command runs the first time
@@ -49,7 +54,7 @@ public class MoveElevator extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (this.limitSwitch.get() || isTimedOut());
+    return (this.endSwitch.get() || isTimedOut());
   }
 
   // Called once after isFinished returns true

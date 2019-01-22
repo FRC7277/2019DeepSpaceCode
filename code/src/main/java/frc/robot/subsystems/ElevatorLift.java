@@ -32,8 +32,7 @@ public class ElevatorLift extends Subsystem {
     private SpeedControllerGroup main;
     
     /**
-     * Takes 4 port integers, left-back, right-back, left-front, right-front
-     * Takes a joystick object to pass to the default JoystickDrive command
+     * Takes 2 port-integers, for left and right motor
      */
     public ElevatorLift(int left, int right) {
         
