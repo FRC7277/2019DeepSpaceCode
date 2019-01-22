@@ -14,27 +14,18 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class PowerIntake extends Command {
-  private double time;
   private double power;
-  public PowerIntake(double time, double power) {
+  public PowerIntake(double power) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.intake);
-    this.time = time;
     this.power = power;
 
-  }
-
-  public PowerIntake(double power) {
-    this(RobotMap.intakeTime, power);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
-    setTimeout(this.time);
-
     Robot.intake.setSpeed(this.power);
     SmartDashboard.putString("intake", Double.toString(this.power));;
     
@@ -48,7 +39,7 @@ public class PowerIntake extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return isTimedOut();
+    return false;
   }
 
   // Called once after isFinished returns true

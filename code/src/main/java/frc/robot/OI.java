@@ -77,8 +77,8 @@ public class OI {
   public OI() {
     launchButton.whenPressed(new LaunchHatch());
 
-    inButton.whenPressed(new PowerIntake(-1));
-    outButton.whenPressed(new PowerIntake(1));
+    inButton.whileHeld(new PowerIntake(-1));
+    outButton.whileHeld(new PowerIntake(1));
   }
 
   public Joystick getJoystick() {
