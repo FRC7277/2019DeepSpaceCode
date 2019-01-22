@@ -10,8 +10,7 @@ package frc.robot;
 // Import Robot superclass
 import edu.wpi.first.wpilibj.TimedRobot;
 
-// Import command and schedular classes
-import edu.wpi.first.wpilibj.command.Command;
+// Import schedular classes
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 // Import subsystems
@@ -49,10 +48,6 @@ public class Robot extends TimedRobot {
 
     // Create VisionThread
     public static VisionThread visionProcess = new VisionThread();
-
-    //Creating the syncronizing object
-    public static final Object imgLock = new Object();
-
 
     /**
      * This function is run when the robot is first started up and should be used
