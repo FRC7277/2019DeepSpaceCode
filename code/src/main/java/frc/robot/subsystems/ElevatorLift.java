@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 import frc.robot.commands.ControlElevator;
 
@@ -42,6 +43,19 @@ public class ElevatorLift extends Subsystem {
         
         // Create group of controllers
         this.main = new SpeedControllerGroup(this.left, this.right);
+
+        // Create thread that monitors elevator position
+        new Thread(() -> {
+
+            // Populate buttons
+            DigitalInput[] limitSwitches = new DigitalInput[RobotMap.switches.length];
+
+            // Checks state of every limitSwitch in RobotMap
+            for (int button = 0; button < RobotMap.switches.length; button++) {
+
+            }
+
+        }).start();
         
     }
     
@@ -55,6 +69,15 @@ public class ElevatorLift extends Subsystem {
 
     }
     
+    /**
+     * Method that returns the last limit switch the elevator was seen at
+     * @return int representing last switch (0: bottom, > higher)
+     */
+    public int getPosition() {
+        return 0; //TODO
+    }
+
+
     /**
      * Accessor for the motor group
      */
