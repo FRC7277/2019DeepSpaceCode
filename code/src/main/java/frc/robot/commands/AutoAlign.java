@@ -17,7 +17,7 @@ import frc.robot.Robot;
  */
 public class AutoAlign extends Command {
   
-  double centerX;
+  private double centerX;
 
   public AutoAlign(int speed, int rotate) {
     // Use requires() here to declare subsystem dependencies
@@ -46,7 +46,7 @@ public class AutoAlign extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (Math.abs(centerX)<= 0.001);
+    return (Math.abs(centerX) <= 0.01);
   }
 
   // Called once after isFinished returns true
