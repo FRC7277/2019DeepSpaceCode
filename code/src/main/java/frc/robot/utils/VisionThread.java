@@ -2,8 +2,7 @@ package frc.robot.utils;
 
 // Import GRIP pipeline
 import frc.robot.utils.GripPipeline;
-//Import the Main Robot
-import frc.robot.Robot;
+
 
 // Import CameraServer
 import edu.wpi.first.cameraserver.CameraServer;
@@ -97,11 +96,9 @@ public class VisionThread extends Thread {
                 //if there is something within the Contour Output
                 if (!pipeline.filterContoursOutput().isEmpty()){
                 Rect r = Imgproc.boundingRect(contourOuput.get(0));
-                synchronized(Robot.imgLock){
-                    //Computing for the X value center by getting the 
-                    //X value in the conner and dividing it in two
-                    centerX = r.x + (r.width / 2);
-                }
+                //Computing for the X value center by getting the 
+                //X value in the conner and dividing it in two
+                centerX = r.x + (r.width / 2);
                 }
             }
             
