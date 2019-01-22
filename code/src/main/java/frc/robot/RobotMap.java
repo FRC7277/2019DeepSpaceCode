@@ -55,5 +55,8 @@ public class RobotMap {
     public static final int bButton = 2; //B button
     public static final int xButton = 3;
     public static final int yButton = 4;
+
+    // Limit switch references
+    public static final int[] switches = {0, 1, 2, 3, 4, 5};
     
 }
