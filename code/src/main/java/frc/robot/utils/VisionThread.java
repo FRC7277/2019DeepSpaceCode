@@ -53,10 +53,10 @@ public class VisionThread extends Thread {
         // Create a CvSink pulling from the camera
         CvSink cvSink = CameraServer.getInstance().getVideo();
         // Create cv output linked to SmartDashboard component 'Gray'
-        CvSource outputStream = CameraServer.getInstance().putVideo("Gray", 640, 480);
+        CvSource outputStream = CameraServer.getInstance().putVideo("Gray", 320, 240);
         
         // Create misc output
-        CvSource miscOutput = CameraServer.getInstance().putVideo("Misc", 640, 480);
+        CvSource miscOutput = CameraServer.getInstance().putVideo("Misc", 320, 240);
 
         // Create mats (matrice capable of containing images) for source and output
         // Source stores a raw frame from cvSink
