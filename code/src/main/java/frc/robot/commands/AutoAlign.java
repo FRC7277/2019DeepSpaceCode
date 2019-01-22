@@ -34,11 +34,9 @@ public class AutoAlign extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      //Synchronized in order for countinous update
-      synchronized (Robot.imgLock) {
-        //Settnig the center of the X value to the right on
-        centerX = Robot.visionProcess.getCenterX();
-      }
+      
+    //Settnig the center of the X value to the right on
+    centerX = Robot.visionProcess.getCenterX();
     //Making it so that the robot turn until the thing return zero
     double turn = centerX - (320 / 2);
     Robot.m_drivetrain.getDrive().arcadeDrive(0, turn * 0.005);
