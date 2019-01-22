@@ -19,7 +19,7 @@ public class AutoAlign extends Command {
   
   double centerX;
 
-  public AutoAlign(int speed, int rotate) {
+  public AutoAlign() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.m_drivetrain);
 

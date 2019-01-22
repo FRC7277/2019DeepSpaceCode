@@ -47,11 +47,14 @@ public class RobotMap {
     public static final int solenoid = 0;
     public static final double solenoidTime = 0.5;
 
-    // Button mappings
+    // Controller button mappings
     public static final int aButton = 1;
     public static final int bButton = 2; //B button
     public static final int xButton = 3;
     public static final int yButton = 4;
+
+    //Joystick button mappings
+    public static final int joystickSideButton = 1;
 
     // Limit switch references (Bottom to Top)
     public static final int[] switches = {0, 1, 2, 3, 4, 5};

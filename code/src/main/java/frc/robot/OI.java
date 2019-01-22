@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.RobotMap;
 import frc.robot.commands.LaunchHatch;
 import frc.robot.commands.PowerIntake;
+import frc.robot.commands.AutoAlign;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -74,13 +75,18 @@ public class OI {
   private Button inButton = new JoystickButton(controller, RobotMap.xButton);
   private Button outButton = new JoystickButton(controller, RobotMap.yButton);
 
+  private Button alignButton = new JoystickButton(joystick, RobotMap.joystickSideButton);
   public OI() {
+    //Assigning commands to buttons
     launchButton.whenPressed(new LaunchHatch());
 
     inButton.whileHeld(new PowerIntake(-1));
     outButton.whileHeld(new PowerIntake(1));
+
+    alignButton.whenPressed(new AutoAlign());
   }
 
+  //Getter for the Controller objects
   public Joystick getJoystick() {
     return this.joystick;
   }
