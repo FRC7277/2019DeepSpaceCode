@@ -2,8 +2,7 @@ package frc.robot.utils;
 
 // Import GRIP pipeline
 import frc.robot.utils.GripPipeline;
-//Import the Main Robot
-import frc.robot.Robot;
+
 
 // Import CameraServer
 import edu.wpi.first.cameraserver.CameraServer;
