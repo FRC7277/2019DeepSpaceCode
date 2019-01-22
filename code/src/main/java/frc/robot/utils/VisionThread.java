@@ -28,7 +28,9 @@ import java.util.ArrayList;
 public class VisionThread extends Thread {
 
     //Creating the double centerX in order to compute for the center of the object
-    private double centerX = 0.0;
+    private double centerX;
+    private Mat source;
+    private ArrayList<MatOfPoint> contourOutput;
 
     @Override
     public void run() {
@@ -38,9 +40,6 @@ public class VisionThread extends Thread {
         vc_chooser.setDefaultOption("Normal", "USB Camera 0");
         vc_chooser.addOption("Gray", "Gray");
         SmartDashboard.putData("Camera mode", vc_chooser);
-        
-        // Define contour output
-        ArrayList<MatOfPoint> contourOuput;
 
         // Reference USB camera connected to RIO (and also start automatic capture)
         UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
@@ -60,7 +59,7 @@ public class VisionThread extends Thread {
 
         // Create mats (matrice capable of containing images) for source and output
         // Source stores a raw frame from cvSink
-        Mat source = new Mat();
+        this.source = new Mat();
         // Output provides container to put processed frame in
         Mat output = new Mat();
 
@@ -92,13 +91,13 @@ public class VisionThread extends Thread {
                 //Passing the image mat into the GRIP pipeline
                 pipeline.process(source);
                 //Passing the output into the Array
-                contourOuput = pipeline.filterContoursOutput();
+                this.contourOutput = pipeline.filterContoursOutput();
 
                 //Making a Seperate if statement checking for 
                 //if there is something within the Contour Output
                 if (!pipeline.filterContoursOutput().isEmpty()){
                     
-                    Rect r = Imgproc.boundingRect(contourOuput.get(0));
+                    Rect r = Imgproc.boundingRect(contourOutput.get(0));
                     //Computing for the X value center by getting the 
                     //X value in the conner and dividing it in two
                     centerX = r.x + (r.width / 2);
@@ -112,6 +111,14 @@ public class VisionThread extends Thread {
 
     public double getCenterX(){
         return centerX;
+    }
+
+    public Mat getSource() {
+        return this.source;
+    }
+
+    public ArrayList<MatOfPoint> getContours() {
+        return this.contourOutput;
     }
     
 }
