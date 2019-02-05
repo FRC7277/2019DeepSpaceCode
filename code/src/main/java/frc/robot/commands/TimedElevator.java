@@ -5,32 +5,26 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-//Comment
-
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-
-public class AlignElevator extends Command {
+public class TimedElevator extends Command {
 
   private double power;
-  private double timeout;
+  private double time;
 
-  public AlignElevator(double direction, double timeout) {
+  public TimedElevator(double power, double time) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.elevator);
+    this.power = power;
+    this.time = time;
 
-    this.power = direction;
-    this.timeout = timeout;
-  }
-
-  public AlignElevator(double direction) {
-    this(direction, RobotMap.elevatorTimeout);
   }
 
   // Called just before this Command runs the first time
@@ -38,8 +32,8 @@ public class AlignElevator extends Command {
   protected void initialize() {
 
     Robot.elevator.setSpeed(this.power);
-    setTimeout(this.timeout);
-
+    setTimeout(this.time);
+    
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -50,30 +44,19 @@ public class AlignElevator extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return isTimedOut();// || (position() != -1);
+    return isTimedOut();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.elevator.setSpeed(0.0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    this.end();
   }
-
-  public int checkElevatorPosition() {
-    for (int x = 0; x < RobotMap.switches.length; x++) {
-      DigitalInput temp = new DigitalInput(RobotMap.switches[x]);
-      if (temp.get()) {
-        temp.close();
-        return x;
-      }
-      temp.close();
-    }
-    return -1;
-  }
-
 }
