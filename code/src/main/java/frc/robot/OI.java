@@ -16,6 +16,7 @@ import frc.robot.RobotMap;
 import frc.robot.commands.LaunchHatch;
 import frc.robot.commands.PowerIntake;
 import frc.robot.commands.AutoAlign;
+import frc.robot.commands.TimedElevator;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -75,13 +76,18 @@ public class OI {
   private Button inButton = new JoystickButton(controller, RobotMap.xButton);
   private Button outButton = new JoystickButton(controller, RobotMap.yButton);
 
+  private Button testButton = new JoystickButton(controller, RobotMap.lbButton);
+
   private Button alignButton = new JoystickButton(joystick, RobotMap.joystickSideButton);
+
   public OI() {
     //Assigning commands to buttons
     launchButton.whenPressed(new LaunchHatch());
 
     inButton.whileHeld(new PowerIntake(-1));
     outButton.whileHeld(new PowerIntake(1));
+
+    testButton.whenPressed(new TimedElevator(0.3, 0.25));
 
     alignButton.whenPressed(new AutoAlign());
   }

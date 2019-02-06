@@ -53,6 +53,9 @@ public class RobotMap {
     public static final int xButton = 3;
     public static final int yButton = 4;
 
+    public static final int lbButton = 5;
+    public static final int rbButton = 6;
+
     //Joystick button mappings
     public static final int joystickSideButton = 1;
 
