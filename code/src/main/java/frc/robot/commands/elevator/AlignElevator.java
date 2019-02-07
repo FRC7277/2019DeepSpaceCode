@@ -7,23 +7,24 @@
 
 //Comment
 
-package frc.robot.commands;
+package frc.robot.commands.elevator;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 
-public class AlignElevator extends Command {
+public class AlignElevator extends BaseElevator {
 
   private double power;
   private double timeout;
 
+  /**
+   * Moves the elevator in the direction until it reaches a switch
+   */
   public AlignElevator(double direction, double timeout) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.elevator);
+    super();
 
     this.power = direction;
     this.timeout = timeout;
@@ -45,35 +46,29 @@ public class AlignElevator extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    super.execute();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return isTimedOut();// || (position() != -1);
+    return isTimedOut() || (getPosition() != -1);
   }
 
+  
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    super.end();
+    Robot.lastEP = getPosition();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-  }
-
-  public int checkElevatorPosition() {
-    for (int x = 0; x < RobotMap.switches.length; x++) {
-      DigitalInput temp = new DigitalInput(RobotMap.switches[x]);
-      if (temp.get()) {
-        temp.close();
-        return x;
-      }
-      temp.close();
-    }
-    return -1;
+    super.end();
+    Robot.lastEP = -1;
   }
 
 }

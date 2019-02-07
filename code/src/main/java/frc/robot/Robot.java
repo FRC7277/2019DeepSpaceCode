@@ -49,6 +49,9 @@ public class Robot extends TimedRobot {
     // Create VisionThread
     public static VisionThread visionProcess = new VisionThread();
 
+    // Create globalish variable for elevator commands to track
+    public static int lastEP = 0;
+
     /**
      * This function is run when the robot is first started up and should be used
      * for any initialization code.

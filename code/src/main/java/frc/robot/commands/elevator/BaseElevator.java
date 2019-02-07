@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.elevator;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -13,48 +13,43 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class MoveElevator extends Command {
+public class BaseElevator extends Command {
 
-  private DigitalInput endSwitch;
-  private double power;
-  private double timeout;
+  private DigitalInput[] switches;
+  private int position;
 
-  public MoveElevator(int startSwitch, int endSwitch, double timeout) {
+  public BaseElevator() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.elevator);
 
-    // Create digital input
-    this.endSwitch = new DigitalInput(endSwitch);
+    // Create DI reads
+    switches = new DigitalInput[RobotMap.switches.length];
 
-    //Reference elevator speed
-    this.power = RobotMap.elevatorSpeed * ((endSwitch > startSwitch) ? 1 : -1);
+    for (int x = 0; x < switches.length; x++) {
 
-    // Reference timeout
-    this.timeout = timeout;
+      // Create DI using RobotMap port
+      switches[x] = new DigitalInput(RobotMap.switches[x]);
 
-  }
+    }
 
-  public MoveElevator(int startSwitch, int endSwitch) {
-    this(startSwitch, endSwitch, RobotMap.elevatorTimeout);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.elevator.setSpeed(this.power);
-    setTimeout(this.timeout);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    position = getPosition();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (this.endSwitch.get() || isTimedOut());
+    return false;
   }
 
   // Called once after isFinished returns true
@@ -67,6 +62,31 @@ public class MoveElevator extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
+    this.end();
   }
+
+  /**
+   * 
+   * @return The index in RobotMap.switches of the DI the elevator is on
+   */
+  public int getPosition() {
+
+    // Iterate through each DigitalInput
+    for (int x = 0; x < RobotMap.switches.length; x++) {
+
+      // Check if the switch is pressed and return if it is
+      if (switches[x].get()) {
+        return x;
+      }
+
+    }
+    // -1 signal to represent no switches pressed
+    return -1;
+
+  }
+
+  public DigitalInput[] getSwitches() {
+    return switches;
+  }
+
 }

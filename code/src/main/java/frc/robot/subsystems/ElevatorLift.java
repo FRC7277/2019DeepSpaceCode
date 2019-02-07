@@ -10,9 +10,9 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.SpeedController;
 
-import frc.robot.commands.ControlElevator;
+import frc.robot.commands.elevator.ControlElevator;
 
 import frc.robot.Robot;
 import frc.robot.RobotMap;
@@ -25,8 +25,8 @@ public class ElevatorLift extends Subsystem {
     // here. Call these from Commands.
     
     // Define motor object for each motor
-    private WPI_VictorSPX left;
-    private WPI_VictorSPX right;
+    private SpeedController left;
+    private SpeedController right;
     
     // Define speed controller group
     private SpeedControllerGroup main;
@@ -76,7 +76,7 @@ public class ElevatorLift extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
         
-        setDefaultCommand(new ControlElevator(Robot.m_oi.getController()));
+        setDefaultCommand(new ControlElevator());
     }
 
 }

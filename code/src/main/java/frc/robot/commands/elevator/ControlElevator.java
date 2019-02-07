@@ -5,33 +5,40 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.elevator;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class ControlElevator extends Command {
+public class ControlElevator extends BaseElevator {
 
   private XboxController controller;
 
-  public ControlElevator(XboxController controller) {
+  private DigitalInput topGuard;
+  private DigitalInput bottomGuard;
+
+  public ControlElevator(XboxController controller, int bottomGuard, int topGuard) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.elevator);
+    super();
 
     this.controller = controller;
+
+    this.bottomGuard = getSwitches()[bottomGuard];
+    this.topGuard = getSwitches()[topGuard];
 
   }
 
   public ControlElevator() {
 
-    this(Robot.m_oi.getController());
+    this(Robot.m_oi.getController(), RobotMap.switches[0], RobotMap.switches[RobotMap.switches.length]);
 
   }
 
@@ -48,8 +55,17 @@ public class ControlElevator extends Command {
 
     //SmartDashboard.putNumber("Elevator", vector);
     SmartDashboard.putString("Elevator", Double.toString(vector));
+
+    // Cap speed when touching a switch guard
+    if (topGuard.get()) {
+      vector = vector < 0 ? vector : 0.0;
+    } else if (bottomGuard.get()) {
+      vector = vector > 0 ? vector : 0.0;
+    }
+
+    // Set spped of elevator
     Robot.elevator.setSpeed(vector);
-    /*
+    /* Old code to read DPad up down instead of joystick
     // Reference POV Value
     int value = this.controller.getPOV();
 
@@ -75,16 +91,18 @@ public class ControlElevator extends Command {
     return false;
   }
 
+  /*
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.elevator.setSpeed(0.0);
+    
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    this.end();
+    
   }
+  */
 }

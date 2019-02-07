@@ -5,34 +5,73 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.elevator;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class TimedElevator extends Command {
+public class MoveElevator extends BaseElevator {
 
+  private DigitalInput endSwitch;
+  private int target;
   private double power;
-  private double time;
+  private double timeout;
 
-  public TimedElevator(double power, double time) {
+  private boolean autoFlag;
+
+  public MoveElevator(int start, int target, double timeout) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.elevator);
-    this.power = power;
-    this.time = time;
+    super();
 
+    // Create digital input
+    this.target = target;
+    this.endSwitch = getSwitches()[target];
+
+    //Reference elevator speed
+    this.power = RobotMap.elevatorSpeed * ((target > start) ? 1 : -1);
+
+    // Reference timeout
+    this.timeout = timeout;
+
+    this.autoFlag = false;
+
+  }
+
+  public MoveElevator(int start, int target) {
+    this(start, target, RobotMap.elevatorTimeout);
+  }
+
+  public MoveElevator(int target, double timeout) {
+    super();
+
+    // Reference target
+    this.target = target;
+    this.endSwitch = getSwitches()[target];
+
+    this.timeout = timeout;
+
+    this.autoFlag = true;
+  }
+
+  public MoveElevator(int target) {
+    this(target, RobotMap.elevatorTimeout);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
 
+    if (autoFlag) {
+      this.power = RobotMap.elevatorSpeed * ((this.target > Robot.lastEP) ? 1 : -1);
+    }
+
     Robot.elevator.setSpeed(this.power);
-    setTimeout(this.time);
-    
+    setTimeout(this.timeout);
+
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -43,10 +82,11 @@ public class TimedElevator extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return isTimedOut();
+    return (this.endSwitch.get() || isTimedOut());
   }
 
   // Called once after isFinished returns true
+  /*
   @Override
   protected void end() {
     Robot.elevator.setSpeed(0.0);
@@ -56,6 +96,7 @@ public class TimedElevator extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    this.end();
+    end();
   }
+  */
 }
