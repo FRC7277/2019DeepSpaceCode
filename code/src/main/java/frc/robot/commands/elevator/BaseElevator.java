@@ -23,16 +23,6 @@ public class BaseElevator extends Command {
     // eg. requires(chassis);
     requires(Robot.elevator);
 
-    // Create DI reads
-    switches = new DigitalInput[RobotMap.switches.length];
-
-    for (int x = 0; x < switches.length; x++) {
-
-      // Create DI using RobotMap port
-      switches[x] = new DigitalInput(RobotMap.switches[x]);
-
-    }
-
   }
 
   // Called just before this Command runs the first time
@@ -75,7 +65,7 @@ public class BaseElevator extends Command {
     for (int x = 0; x < RobotMap.switches.length; x++) {
 
       // Check if the switch is pressed and return if it is
-      if (switches[x].get()) {
+      if (Robot.switches[x].get()) {
         return x;
       }
 

@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -60,6 +62,6 @@ public class RobotMap {
     public static final int joystickSideButton = 1;
 
     // Limit switch references (Bottom to Top)
-    public static final int[] switches = {-1, -1, -1, -1, -1, 2};
+    public static final int[] switches = {2};
     
 }

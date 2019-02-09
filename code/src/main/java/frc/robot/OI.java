@@ -87,9 +87,9 @@ public class OI {
     inButton.whileHeld(new PowerIntake(-1));
     outButton.whileHeld(new PowerIntake(1));
 
-    testButton.whenPressed(new TimedElevator(0.3, 0.25));
+    //testButton.whenPressed(new TimedElevator(0.3, 0.25));
 
-    alignButton.whenPressed(new AutoAlign());
+    //alignButton.whenPressed(new AutoAlign());
   }
 
   //Getter for the Controller objects

@@ -23,21 +23,21 @@ public class ControlElevator extends BaseElevator {
   private DigitalInput topGuard;
   private DigitalInput bottomGuard;
 
-  public ControlElevator(XboxController controller, int bottomGuard, int topGuard) {
+  public ControlElevator(XboxController controller, /*int bottomGuard,*/ DigitalInput topGuard) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     super();
 
     this.controller = controller;
 
-    this.bottomGuard = getSwitches()[bottomGuard];
-    this.topGuard = getSwitches()[topGuard];
+    //this.bottomGuard = getSwitches()[bottomGuard];
+    this.topGuard = topGuard;
 
   }
 
   public ControlElevator() {
 
-    this(Robot.m_oi.getController(), RobotMap.switches[0], RobotMap.switches[RobotMap.switches.length]);
+    this(Robot.m_oi.getController(), /*RobotMap.switches[0],*/ Robot.switches[Robot.switches.length - 1]);
 
   }
 
@@ -50,17 +50,24 @@ public class ControlElevator extends BaseElevator {
   @Override
   protected void execute() {
 
-    double vector = -this.controller.getY(GenericHID.Hand.kLeft);
+    double vector = -0.25 * this.controller.getY(GenericHID.Hand.kLeft);
 
     //SmartDashboard.putNumber("Elevator", vector);
     SmartDashboard.putString("Elevator", Double.toString(vector));
 
+    boolean topState = topGuard.get();
+
+    SmartDashboard.putString("Topguard", Boolean.toString(topState));
+
     // Cap speed when touching a switch guard
-    if (topGuard.get()) {
+    if (topState) {
       vector = vector < 0 ? vector : 0.0;
-    } else if (bottomGuard.get()) {
+    } /*else if (bottomGuard.get()) {
       vector = vector > 0 ? vector : 0.0;
     }
+    */
+
+    SmartDashboard.putString("ModEl", Double.toString(vector));
 
     // Set spped of elevator
     Robot.elevator.setSpeed(vector);

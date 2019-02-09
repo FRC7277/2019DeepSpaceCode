@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 // Import schedular classes
 import edu.wpi.first.wpilibj.command.Scheduler;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+
 // Import subsystems
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ElevatorLift;
@@ -31,6 +33,10 @@ import frc.robot.utils.VisionThread;
  * project.
  */
 public class Robot extends TimedRobot {
+
+    // Create DI's
+    public static DigitalInput[] switches = {new DigitalInput(RobotMap.switches[0])};
+
 
     // Create subsystems used by buttons (need to be created before OI)
     public static HatchPlacer hatcher = new HatchPlacer();
