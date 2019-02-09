@@ -60,6 +60,6 @@ public class RobotMap {
     public static final int joystickSideButton = 1;
 
     // Limit switch references (Bottom to Top)
-    public static final int[] switches = {0, 1, 2, 3, 4, 5};
+    public static final int[] switches = {-1, -1, -1, -1, -1, 2};
     
 }
