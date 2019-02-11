@@ -16,7 +16,7 @@ import frc.robot.RobotMap;
 import frc.robot.commands.LaunchHatch;
 import frc.robot.commands.PowerIntake;
 import frc.robot.commands.AutoAlign;
-import frc.robot.commands.TimedElevator;
+import frc.robot.commands.elevator.TimedElevator;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -87,7 +87,7 @@ public class OI {
     inButton.whileHeld(new PowerIntake(-1));
     outButton.whileHeld(new PowerIntake(1));
 
-    //testButton.whenPressed(new TimedElevator(0.3, 0.25));
+    testButton.whenPressed(new TimedElevator(RobotMap.elevatorModifier, 0.25));
 
     //alignButton.whenPressed(new AutoAlign());
   }

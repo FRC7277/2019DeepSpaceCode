@@ -5,14 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.elevator;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class TimedElevator extends Command {
+public class TimedElevator extends BaseElevator {
 
   private double power;
   private double time;
