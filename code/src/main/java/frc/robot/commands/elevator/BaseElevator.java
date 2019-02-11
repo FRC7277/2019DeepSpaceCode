@@ -62,10 +62,10 @@ public class BaseElevator extends Command {
   public int getPosition() {
 
     // Iterate through each DigitalInput
-    for (int x = 0; x < RobotMap.switches.length; x++) {
+    for (int x = 0; x < Robot.elevator.getSwitches().length; x++) {
 
       // Check if the switch is pressed and return if it is
-      if (Robot.switches[x].get()) {
+      if (Robot.elevator.getSwitches()[x].get()) {
         return x;
       }
 

@@ -34,10 +34,6 @@ import frc.robot.utils.VisionThread;
  */
 public class Robot extends TimedRobot {
 
-    // Create DI's
-    public static DigitalInput[] switches = {new DigitalInput(RobotMap.switches[0])};
-
-
     // Create subsystems used by buttons (need to be created before OI)
     public static HatchPlacer hatcher = new HatchPlacer();
     public static Intake intake = new Intake();

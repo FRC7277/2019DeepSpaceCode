@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 import frc.robot.commands.elevator.ControlElevator;
 
@@ -30,6 +31,9 @@ public class ElevatorLift extends Subsystem {
     
     // Define speed controller group
     private SpeedControllerGroup main;
+
+    // Define switch array
+    private DigitalInput[] switches;
     
     /**
      * Takes 2 port-integers, for left and right motor
@@ -42,6 +46,9 @@ public class ElevatorLift extends Subsystem {
         
         // Create group of controllers
         this.main = new SpeedControllerGroup(this.left, this.right);
+
+        // Create DI references to limit switches
+        switches = new DigitalInput[]{new DigitalInput(RobotMap.switches[0])};
         
     }
     
@@ -60,6 +67,13 @@ public class ElevatorLift extends Subsystem {
      */
     public SpeedControllerGroup getMotors() {
         return this.main;
+    }
+
+    /**
+     * Acsessor for the limit switches
+     */
+    public DigitalInput[] getSwitches() {
+        return this.switches;
     }
 
     // Method to set motors speed
