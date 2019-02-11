@@ -87,7 +87,7 @@ public class OI {
     inButton.whileHeld(new PowerIntake(-1));
     outButton.whileHeld(new PowerIntake(1));
 
-    testButton.whenPressed(new TimedElevator(RobotMap.elevatorModifier, 0.25));
+    //testButton.whenPressed(new TimedElevator(RobotMap.elevatorModifier, 0.25));
 
     //alignButton.whenPressed(new AutoAlign());
   }

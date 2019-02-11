@@ -68,6 +68,9 @@ public class ControlElevator extends BaseElevator {
     }
     */
 
+    vector = vector + 0.325;
+    vector = vector > 1 ? 1 : vector;
+
     SmartDashboard.putString("ModEl", Double.toString(vector));
 
     // Set spped of elevator
