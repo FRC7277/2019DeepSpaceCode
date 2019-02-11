@@ -31,7 +31,7 @@ public class MoveElevator extends BaseElevator {
     this.endSwitch = getSwitches()[target];
 
     //Reference elevator speed
-    this.power = RobotMap.elevatorSpeed * ((target > start) ? 1 : -1);
+    this.power = RobotMap.elevatorModifier * ((target > start) ? 1 : -1);
 
     // Reference timeout
     this.timeout = timeout;
@@ -65,7 +65,7 @@ public class MoveElevator extends BaseElevator {
   protected void initialize() {
 
     if (autoFlag) {
-      this.power = RobotMap.elevatorSpeed * ((this.target > Robot.lastEP) ? 1 : -1);
+      this.power = RobotMap.elevatorModifier * ((this.target > Robot.lastEP) ? 1 : -1);
     }
 
     Robot.elevator.setSpeed(this.power);

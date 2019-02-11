@@ -51,7 +51,7 @@ public class ControlElevator extends BaseElevator {
   @Override
   protected void execute() {
 
-    double vector = -0.25 * this.controller.getY(GenericHID.Hand.kLeft);
+    double vector = -this.controller.getY(GenericHID.Hand.kLeft);
 
     //SmartDashboard.putNumber("Elevator", vector);
     SmartDashboard.putString("Elevator", Double.toString(vector));

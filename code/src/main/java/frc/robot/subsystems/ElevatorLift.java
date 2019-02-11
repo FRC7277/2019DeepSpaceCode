@@ -35,10 +35,13 @@ public class ElevatorLift extends Subsystem {
     // Define switch array
     private DigitalInput[] switches;
     
+    // Define modifier reference
+    private double modifier;
+
     /**
      * Takes 2 port-integers, for left and right motor
      */
-    public ElevatorLift(int left, int right) {
+    public ElevatorLift(int left, int right, double modifier) {
         
         // Create Motor objects using parameters
         this.left = new WPI_VictorSPX(left);
@@ -49,6 +52,9 @@ public class ElevatorLift extends Subsystem {
 
         // Create DI references to limit switches
         switches = new DigitalInput[]{new DigitalInput(RobotMap.switches[0])};
+
+        // Reference modifier
+        this.modifier = modifier;
         
     }
     
@@ -58,7 +64,7 @@ public class ElevatorLift extends Subsystem {
     public ElevatorLift() {
         
         // Pass robotmap into DI constructor
-        this(RobotMap.leftElevator, RobotMap.rightElevator);
+        this(RobotMap.leftElevator, RobotMap.rightElevator, RobotMap.elevatorModifier);
 
     }
 
@@ -82,7 +88,7 @@ public class ElevatorLift extends Subsystem {
      * @param speed Value to set the motor speed to
      */
     public void setSpeed(double speed) {
-        main.set(speed);
+        main.set(speed*this.modifier);
     }
     
     @Override
