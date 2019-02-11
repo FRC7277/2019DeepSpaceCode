@@ -13,8 +13,6 @@ import edu.wpi.first.wpilibj.TimedRobot;
 // Import schedular classes
 import edu.wpi.first.wpilibj.command.Scheduler;
 
-import edu.wpi.first.wpilibj.DigitalInput;
-
 // Import subsystems
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ElevatorLift;

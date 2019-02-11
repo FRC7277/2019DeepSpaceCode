@@ -15,7 +15,6 @@ import edu.wpi.first.wpilibj.DigitalInput;
 
 import frc.robot.commands.elevator.ControlElevator;
 
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 /**
