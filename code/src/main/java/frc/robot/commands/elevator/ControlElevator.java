@@ -37,7 +37,7 @@ public class ControlElevator extends BaseElevator {
 
   public ControlElevator() {
 
-    this(Robot.m_oi.getController(), /*RobotMap.switches[0],*/ 
+    this(Robot.oi.getController(), /*RobotMap.switches[0],*/ 
          Robot.elevator.getSwitches()[Robot.elevator.getSwitches().length - 1]);
 
   }

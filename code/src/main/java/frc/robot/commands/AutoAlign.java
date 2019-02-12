@@ -21,7 +21,7 @@ public class AutoAlign extends Command {
 
   public AutoAlign() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.m_drivetrain);
+    requires(Robot.drivetrain);
 
     
   }
@@ -39,7 +39,7 @@ public class AutoAlign extends Command {
     centerX = Robot.visionProcess.getCenterX();
     //Making it so that the robot turn until the thing return zero
     double turn = centerX - (320 / 2);
-    Robot.m_drivetrain.getDrive().arcadeDrive(0, turn * 0.005);
+    Robot.drivetrain.getDrive().arcadeDrive(0, turn * 0.005);
     
   }
 
@@ -52,7 +52,7 @@ public class AutoAlign extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_drivetrain.getDrive().arcadeDrive(0, 0);
+    Robot.drivetrain.getDrive().arcadeDrive(0, 0);
   }
 
   // Called when another command which requires one or more of the same

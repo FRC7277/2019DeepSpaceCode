@@ -81,6 +81,17 @@ public class OI {
   private Button alignButton = new JoystickButton(joystick, RobotMap.joystickSideButton);
 
   public OI() {
+    
+    
+
+    //alignButton.whenPressed(new AutoAlign());
+  }
+
+  /**
+   * Attaches buttons to commands
+   */
+  public void linkButtons() {
+
     //Assigning commands to buttons
     launchButton.whenPressed(new LaunchHatch());
 
@@ -89,7 +100,6 @@ public class OI {
 
     upButton.whenPressed(new TimedElevator(RobotMap.elevatorModifier, 0.25));
 
-    //alignButton.whenPressed(new AutoAlign());
   }
 
   //Getter for the Controller objects

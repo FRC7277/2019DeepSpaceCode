@@ -34,15 +34,15 @@ import frc.robot.utils.VisionThread;
  */
 public class Robot extends TimedRobot {
 
-    // Create subsystems used by buttons (need to be created before OI)
+    // Create OI object
+    public static OI oi = new OI();
+
+    // Create subsystems used by buttons
     public static HatchPlacer hatcher = new HatchPlacer();
     public static Intake intake = new Intake();
 
-    // Create OI object
-    public static OI m_oi = new OI();
-
-    // Create subsystem that use buttons/joysticks (need to be created after OI)
-    public static DriveTrain m_drivetrain = new DriveTrain();
+    // Create subsystem that use joysticks
+    public static DriveTrain drivetrain = new DriveTrain();
     public static ElevatorLift elevator = new ElevatorLift();
     
     //Create GripPipeline Object
@@ -60,6 +60,9 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
+
+        // Link buttons to commands
+        oi.linkButtons();
 
         // Create thread for processing camera vision (asynchrous)
         visionProcess.start();
