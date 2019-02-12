@@ -22,7 +22,7 @@ public class JoystickDrive extends Command {
   
   public JoystickDrive(Joystick joy) {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.m_drivetrain);
+    requires(Robot.drivetrain);
     
     // Reference passed joystick
     this.joy = joy;
@@ -38,7 +38,7 @@ public class JoystickDrive extends Command {
   @Override
   protected void execute() {
     
-    Robot.m_drivetrain.arcadeDrive(this.joy);
+    Robot.drivetrain.arcadeDrive(this.joy);
 
     SmartDashboard.putString("Drive X:", Double.toString(this.joy.getX()));
     SmartDashboard.putString("Drive Z:", Double.toString(this.joy.getZ()));
@@ -55,7 +55,7 @@ public class JoystickDrive extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_drivetrain.getDrive().arcadeDrive(0, 0);
+    Robot.drivetrain.getDrive().arcadeDrive(0, 0);
   }
 
   // Called when another command which requires one or more of the same

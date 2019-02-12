@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.RobotMap;
 import frc.robot.commands.LaunchHatch;
 import frc.robot.commands.PowerIntake;
-import frc.robot.commands.AutoAlign;
+//import frc.robot.commands.AutoAlign;
 import frc.robot.commands.elevator.TimedElevator;
 
 /**
@@ -78,9 +78,17 @@ public class OI {
 
   private Button upButton = new JoystickButton(controller, RobotMap.lbButton);
 
-  private Button alignButton = new JoystickButton(joystick, RobotMap.joystickSideButton);
+  //private Button alignButton = new JoystickButton(joystick, RobotMap.joystickSideButton);
 
   public OI() {
+    
+  }
+
+  /**
+   * Attaches buttons to commands
+   */
+  public void linkButtons() {
+
     //Assigning commands to buttons
     launchButton.whenPressed(new LaunchHatch());
 
@@ -90,6 +98,7 @@ public class OI {
     upButton.whenPressed(new TimedElevator(RobotMap.elevatorModifier, 0.25));
 
     //alignButton.whenPressed(new AutoAlign());
+
   }
 
   //Getter for the Controller objects
