@@ -125,8 +125,11 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopInit() {
         //Remember to cancel an autonomous command if we run one
+
+        // Create input keys
         SmartDashboard.putNumber("ElPassive", RobotMap.elevatorPassive);
         SmartDashboard.putNumber("ZMod", RobotMap.zMod);
+        
     }
 
     /**

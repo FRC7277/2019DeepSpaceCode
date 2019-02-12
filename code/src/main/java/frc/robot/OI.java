@@ -96,7 +96,7 @@ public class OI {
     inButton.whileHeld(new PowerIntake(-1));
     outButton.whileHeld(new PowerIntake(1));
 
-    upButton.whenPressed(new DistanceElevator(25));
+    upButton.whenPressed(new DistanceElevator(40));
 
     //alignButton.whenPressed(new AutoAlign());
 
