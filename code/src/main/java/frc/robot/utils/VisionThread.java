@@ -121,6 +121,7 @@ public class VisionThread extends Thread {
                     we can get the center between the two reflective tape.
                     */
                     targetCenterX = ((center1.x + center2.x)/2 );
+                    SmartDashboard.putNumber("Target Center X", targetCenterX);
                     
                     
                 }
