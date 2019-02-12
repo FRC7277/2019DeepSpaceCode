@@ -120,7 +120,7 @@ public class VisionThread extends Thread {
                     By adding the two top left corner and one rectangle worth of distance
                     we can get the center between the two reflective tape.
                     */
-                    targetCenterX = ((center1.x + center2.y)/2 );
+                    targetCenterX = ((center1.x + center2.x)/2 );
                     
                     
                 }
