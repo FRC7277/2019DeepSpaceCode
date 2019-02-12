@@ -43,9 +43,10 @@ public class RobotMap {
     public static final int leftIntake = 8;
 
     // Elevator speed constant
-    public static final double elevatorModifier = -0.50;
+    public static final double elevatorModifier = 0.50;
     public static final double elevatorTimeout = 10.0;
-    public static final double elevatorPassive = 0.325;
+    public static final double elevatorPassive = 0.1625;
+    public static final double elevatorTimePerInch = 0.01;
 
     // Pneumatic
     public static final int solenoid = 0;

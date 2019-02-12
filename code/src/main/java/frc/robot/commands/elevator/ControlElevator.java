@@ -51,7 +51,7 @@ public class ControlElevator extends BaseElevator {
   @Override
   protected void execute() {
 
-    double vector = -this.controller.getY(GenericHID.Hand.kLeft);
+    double vector = -this.controller.getY(GenericHID.Hand.kLeft) * RobotMap.elevatorModifier;
 
     //SmartDashboard.putNumber("Elevator", vector);
     SmartDashboard.putString("Elevator", Double.toString(vector));
@@ -67,10 +67,6 @@ public class ControlElevator extends BaseElevator {
       vector = vector > 0 ? vector : 0.0;
     }
     */
-
-    vector = vector + SmartDashboard.getNumber("ElPassive", RobotMap.elevatorPassive);
-    SmartDashboard.putNumber("ELPOut", SmartDashboard.getNumber("ElPassive", RobotMap.elevatorPassive));
-    vector = vector > 1 ? 1 : vector;
 
     SmartDashboard.putString("ModEl", Double.toString(vector));
 

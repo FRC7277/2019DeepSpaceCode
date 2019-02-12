@@ -12,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.commands.elevator.ControlElevator;
 
@@ -87,7 +88,19 @@ public class ElevatorLift extends Subsystem {
      * @param speed Value to set the motor speed to
      */
     public void setSpeed(double speed) {
-        main.set(speed*this.modifier);
+
+        SmartDashboard.putNumber("ELPOut", SmartDashboard.getNumber("ElPassive", RobotMap.elevatorPassive));
+
+        // Add speed required to maintain position
+        double vector = speed + SmartDashboard.getNumber("ElPassive", RobotMap.elevatorPassive);
+
+        // Cap in (-1, 1) to prevent runtime error
+        vector = vector > 1 ? 1 : vector;
+        vector = vector < -1 ? -1 : vector;
+
+        // Set speed of speed controllers (multiplied by modifiers)
+        main.set(-vector);
+
     }
     
     @Override
