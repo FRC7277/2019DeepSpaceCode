@@ -21,7 +21,7 @@ public class ControlElevator extends BaseElevator {
   private XboxController controller;
 
   private DigitalInput topGuard;
-  private DigitalInput bottomGuard;
+  //private DigitalInput bottomGuard;
 
   public ControlElevator(XboxController controller, /*int bottomGuard,*/ DigitalInput topGuard) {
     // Use requires() here to declare subsystem dependencies

@@ -7,10 +7,7 @@
 
 package frc.robot.commands.elevator;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
 public class TimedElevator extends BaseElevator {
 
