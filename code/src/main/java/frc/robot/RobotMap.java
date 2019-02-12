@@ -26,6 +26,9 @@ public class RobotMap {
     public static final int leftFront = 4;
     public static final int rightBack = 1;
     public static final int rightFront = 3;
+
+    // Drive joy modifiers
+    public static final double zMod = 0.6;
     
     // Joystick number
     public static final int joystick = 0;
@@ -42,6 +45,7 @@ public class RobotMap {
     // Elevator speed constant
     public static final double elevatorModifier = -0.50;
     public static final double elevatorTimeout = 10.0;
+    public static final double elevatorPassive = 0.325;
 
     // Pneumatic
     public static final int solenoid = 0;

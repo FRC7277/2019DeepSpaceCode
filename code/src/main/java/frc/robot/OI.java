@@ -76,7 +76,7 @@ public class OI {
   private Button inButton = new JoystickButton(controller, RobotMap.xButton);
   private Button outButton = new JoystickButton(controller, RobotMap.yButton);
 
-  private Button testButton = new JoystickButton(controller, RobotMap.lbButton);
+  private Button upButton = new JoystickButton(controller, RobotMap.lbButton);
 
   private Button alignButton = new JoystickButton(joystick, RobotMap.joystickSideButton);
 
@@ -87,7 +87,7 @@ public class OI {
     inButton.whileHeld(new PowerIntake(-1));
     outButton.whileHeld(new PowerIntake(1));
 
-    //testButton.whenPressed(new TimedElevator(RobotMap.elevatorModifier, 0.25));
+    upButton.whenPressed(new TimedElevator(RobotMap.elevatorModifier, 0.25));
 
     //alignButton.whenPressed(new AutoAlign());
   }

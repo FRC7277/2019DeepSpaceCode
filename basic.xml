@@ -1,5 +1,14 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="ZMod" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="161" y="123"/>
+	</widget>
+	<widget field="ELPOut" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="27" y="283"/>
+	</widget>
+	<widget field="ElPassive" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="26" y="259"/>
+	</widget>
 	<widget field="Topguard" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="23" y="225"/>
 		<height>20</height>

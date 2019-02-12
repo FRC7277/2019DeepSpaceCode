@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 // Import schedular classes
 import edu.wpi.first.wpilibj.command.Scheduler;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 // Import subsystems
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ElevatorLift;
@@ -61,6 +63,7 @@ public class Robot extends TimedRobot {
 
         // Create thread for processing camera vision (asynchrous)
         visionProcess.start();
+
     }
 
     /**
@@ -118,6 +121,8 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopInit() {
         //Remember to cancel an autonomous command if we run one
+        SmartDashboard.putNumber("ElPassive", RobotMap.elevatorPassive);
+        SmartDashboard.putNumber("ZMod", RobotMap.zMod);
     }
 
     /**

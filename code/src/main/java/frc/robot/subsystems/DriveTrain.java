@@ -12,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Robot;
 import frc.robot.OI;
@@ -94,6 +95,6 @@ public class DriveTrain extends Subsystem {
   
     public void arcadeDrive(Joystick joy){
           m_drive.arcadeDrive(OI.scaleJoystickInput(-joy.getY()), 
-                              OI.scaleJoystickInput(joy.getZ()));
+                              OI.scaleJoystickInput(joy.getZ()*SmartDashboard.getNumber("ZMod", RobotMap.zMod)));
     }
 }
