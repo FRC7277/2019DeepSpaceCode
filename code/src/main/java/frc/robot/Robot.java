@@ -37,6 +37,7 @@ public class Robot extends TimedRobot {
     // Create subsystems used by buttons (need to be created before OI)
     public static HatchPlacer hatcher = new HatchPlacer();
     public static Intake intake = new Intake();
+    
 
     // Create OI object
     public static OI m_oi = new OI();
