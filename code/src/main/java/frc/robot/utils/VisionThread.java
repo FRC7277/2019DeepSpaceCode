@@ -10,8 +10,11 @@ import edu.wpi.first.cameraserver.CameraServer;
 // Import OpenCV structs
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
+import org.opencv.core.MatOfPoint2f;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.core.Rect;
+
+
 
 // Import video stream objects
 import edu.wpi.cscore.CvSink;
@@ -24,6 +27,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 // Import ArrayList
 import java.util.ArrayList;
+
+//Importing Test
+import org.opencv.core.RotatedRect;
+import org.opencv.core.Rect2d;
+import org.opencv.core.Point;
+
 
 public class VisionThread extends Thread {
 
@@ -62,7 +71,6 @@ public class VisionThread extends Thread {
         this.source = new Mat();
         // Output provides container to put processed frame in
         Mat output = new Mat();
-
         // Create choice string holder
         String choice;
 
@@ -92,16 +100,28 @@ public class VisionThread extends Thread {
                 pipeline.process(source);
                 //Passing the output into the Array
                 this.contourOutput = pipeline.filterContoursOutput();
-
+                
+                MatOfPoint2f  firstBox = new MatOfPoint2f( contourOutput.get(0).toArray() );
+                
                 //Making a Seperate if statement checking for 
                 //if there is something within the Contour Output
                 if (!pipeline.filterContoursOutput().isEmpty()){
                     
-                    Rect r = Imgproc.boundingRect(contourOutput.get(0));
-                    //Computing for the X value center by getting the 
-                    //X value in the conner and dividing it in two
-                    centerX = r.x + (r.width / 2);
+                    //Grabbing the two countour
+                    Rect r1 = Imgproc.boundingRect(contourOutput.get(0));
+                    RotatedRect r3 = Imgproc.minAreaRect(firstBox);
+                    Rect r2 = Imgproc.boundingRect(contourOutput.get(1));
+                    Point center = r3.center;
+                    /*.x returns the the top left corner of the bounding  
+                    By adding the two top left corner and one rectangle worth of distance
+                    we can get the center between the two reflective tape.
+                    */
+                    centerX = ((r1.x + (r2.x + r2.width))/2 );
+                    
+                    
                 }
+
+                
             }
             
 
