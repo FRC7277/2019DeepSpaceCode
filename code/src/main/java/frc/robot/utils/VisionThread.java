@@ -12,8 +12,6 @@ import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.MatOfPoint2f;
 import org.opencv.imgproc.Imgproc;
-import org.opencv.core.Rect;
-
 
 
 // Import video stream objects
@@ -30,14 +28,13 @@ import java.util.ArrayList;
 
 //Importing Test
 import org.opencv.core.RotatedRect;
-import org.opencv.core.Rect2d;
 import org.opencv.core.Point;
 
 
 public class VisionThread extends Thread {
 
     //Creating the double centerX in order to compute for the center of the object
-    private double centerX;
+    private double targetCenterX;
     private Mat source;
     private ArrayList<MatOfPoint> contourOutput;
 
@@ -101,22 +98,29 @@ public class VisionThread extends Thread {
                 //Passing the output into the Array
                 this.contourOutput = pipeline.filterContoursOutput();
                 
-                MatOfPoint2f  firstBox = new MatOfPoint2f( contourOutput.get(0).toArray() );
+                //Passing the contours into usable format
+                MatOfPoint2f firstBox = new MatOfPoint2f( contourOutput.get(0).toArray() );
+                MatOfPoint2f secondBox = new MatOfPoint2f( contourOutput.get(1).toArray() );
                 
                 //Making a Seperate if statement checking for 
                 //if there is something within the Contour Output
                 if (!pipeline.filterContoursOutput().isEmpty()){
                     
                     //Grabbing the two countour
-                    Rect r1 = Imgproc.boundingRect(contourOutput.get(0));
-                    RotatedRect r3 = Imgproc.minAreaRect(firstBox);
-                    Rect r2 = Imgproc.boundingRect(contourOutput.get(1));
-                    Point center = r3.center;
+                    /*Rect r1 = Imgproc.boundingRect(contourOutput.get(0));
+                    Rect r2 = Imgproc.boundingRect(contourOutput.get(1));*/
+
+                    //Creating a rotated rectangle that rotated at the right angle
+                    RotatedRect outlineBox1 = Imgproc.minAreaRect(firstBox);
+                    RotatedRect outlineBox2 = Imgproc.minAreaRect(secondBox);
+
+                    Point center1 = outlineBox1.center;
+                    Point center2 = outlineBox2.center;
                     /*.x returns the the top left corner of the bounding  
                     By adding the two top left corner and one rectangle worth of distance
                     we can get the center between the two reflective tape.
                     */
-                    centerX = ((r1.x + (r2.x + r2.width))/2 );
+                    targetCenterX = ((center1.x + center2.y)/2 );
                     
                     
                 }
@@ -129,8 +133,8 @@ public class VisionThread extends Thread {
 
     }
 
-    public double getCenterX(){
-        return centerX;
+    public double getTargetCenterX(){
+        return this.targetCenterX;
     }
 
     public Mat getSource() {

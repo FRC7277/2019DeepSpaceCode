@@ -35,7 +35,7 @@ public class AutoAlign extends Command {
   protected void execute() {
       
     //Settnig the center of the X value to the right on
-    centerX = Robot.visionProcess.getCenterX();
+    centerX = Robot.visionProcess.getTargetCenterX();
     //Making it so that the robot turn until the thing return zero
     double turn = centerX - (320 / 2);
     Robot.drivetrain.getDrive().arcadeDrive(0, turn * 0.005);
