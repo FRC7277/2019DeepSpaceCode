@@ -92,23 +92,33 @@ public class VisionThread extends Thread {
                 } else {
                     miscOutput.putFrame(source);
                 }
+                
+                SmartDashboard.putString("VisStage", "A");
 
                 //Passing the image mat into the GRIP pipeline
                 pipeline.process(source);
+
+                SmartDashboard.putString("VisStage", "B");
+
                 //Passing the output into the Array
                 this.contourOutput = pipeline.filterContoursOutput();
                 
-                //Passing the contours into usable format
-                MatOfPoint2f firstBox = new MatOfPoint2f( contourOutput.get(0).toArray() );
-                MatOfPoint2f secondBox = new MatOfPoint2f( contourOutput.get(1).toArray() );
+                SmartDashboard.putString("VisStage", "F");
                 
                 //Making a Seperate if statement checking for 
                 //if there is something within the Contour Output
-                if (!pipeline.filterContoursOutput().isEmpty()){
+                SmartDashboard.putNumber("Contour count", pipeline.filterContoursOutput().size());
+                if (pipeline.filterContoursOutput().size() >= 2){
+
+                    SmartDashboard.putString("VisStage", "C");
                     
                     //Grabbing the two countour
                     /*Rect r1 = Imgproc.boundingRect(contourOutput.get(0));
                     Rect r2 = Imgproc.boundingRect(contourOutput.get(1));*/
+
+                    //Passing the contours into usable format
+                    MatOfPoint2f firstBox = new MatOfPoint2f( contourOutput.get(0).toArray() );                
+                    MatOfPoint2f secondBox = new MatOfPoint2f( contourOutput.get(1).toArray() );
 
                     //Creating a rotated rectangle that rotated at the right angle
                     RotatedRect outlineBox1 = Imgproc.minAreaRect(firstBox);
@@ -122,15 +132,21 @@ public class VisionThread extends Thread {
                     */
                     targetCenterX = ((center1.x + center2.x)/2 );
                     SmartDashboard.putNumber("Target Center X", targetCenterX);
+
+                    SmartDashboard.putString("VisStage", "D");
                     
                     
                 }
+
+                //SmartDashboard.putString("VisStage", "E");
 
                 
             }
             
 
         }
+
+        SmartDashboard.putString("VisionThread Interrupted", "Yes");
 
     }
 

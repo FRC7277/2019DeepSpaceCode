@@ -1,5 +1,14 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="Contour count" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="13" y="366"/>
+	</widget>
+	<widget field="VisStage" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="11" y="339"/>
+	</widget>
+	<widget field="Target Center X" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="11" y="315"/>
+	</widget>
 	<widget field="ZMod" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="161" y="123"/>
 	</widget>
@@ -34,9 +43,6 @@
 	<widget field="Auto Selector" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="26" y="14"/>
 	</widget>
-	<widget field="Camera mode" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
-		<location x="202" y="19"/>
-	</widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
 		<location x="2" y="-1"/>
 		<property name="Text" value="Connection"/>
@@ -63,6 +69,32 @@
 	<widget field="Auto mode" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
 		<location x="5" y="19"/>
 	</widget>
+	<widget field="Camera mode" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="25" y="400"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="2" y="-1"/>
+		<property name="Text" value="Connection"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="62" y="2"/>
+		<width>222</width>
+		<height>10</height>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
+		<location x="290" y="136"/>
+		<width>327</width>
+		<height>246</height>
+		<property name="Camera Choice" value="Misc"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
+		<location x="290" y="4"/>
+		<property name="Camera Choice" value="Gray"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
+		<location x="457" y="5"/>
+		<property name="Camera Choice" value="USB Camera 0"/>
+	</static-widget>
 </dashboard>
 <live-window>
 </live-window>
