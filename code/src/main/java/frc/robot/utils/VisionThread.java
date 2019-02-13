@@ -59,7 +59,10 @@ public class VisionThread extends Thread {
         CvSink cvSink = CameraServer.getInstance().getVideo();
         // Create cv output linked to SmartDashboard component 'Gray'
         CvSource outputStream = CameraServer.getInstance().putVideo("Gray", 320, 240);
-        
+        // Create cv output linked to SmartDashboar d "contour" component
+        CvSource contourStream = CameraServer.getInstance().putVideo("Contour", 320, 240);
+
+
         // Create misc output
         CvSource miscOutput = CameraServer.getInstance().putVideo("Misc", 320, 240);
 
@@ -104,10 +107,14 @@ public class VisionThread extends Thread {
                 this.contourOutput = pipeline.filterContoursOutput();
                 
                 SmartDashboard.putString("VisStage", "F");
+
+                SmartDashboard.putNumber("Contour count", pipeline.filterContoursOutput().size());
+
+                //contourStream.putFrame(contourOutptMat);
                 
                 //Making a Seperate if statement checking for 
                 //if there is something within the Contour Output
-                SmartDashboard.putNumber("Contour count", pipeline.filterContoursOutput().size());
+                
                 if (pipeline.filterContoursOutput().size() >= 2){
 
                     SmartDashboard.putString("VisStage", "C");
