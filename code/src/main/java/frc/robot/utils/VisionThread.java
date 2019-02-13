@@ -139,8 +139,10 @@ public class VisionThread extends Thread {
                     */
                     targetCenterX = ((center1.x + center2.x)/2 );
                     SmartDashboard.putNumber("Target Center X", targetCenterX);
-
+                    SmartDashboard.putNumber("Angle Box 1", outlineBox1.angle);
+                    SmartDashboard.putNumber("Angle Box 2", outlineBox2.angle);
                     SmartDashboard.putString("VisStage", "D");
+
                     
                     
                 }
