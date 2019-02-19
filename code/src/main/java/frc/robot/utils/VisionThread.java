@@ -108,21 +108,21 @@ public class VisionThread extends Thread {
                 
                 SmartDashboard.putString("VisStage", "F");
 
-                SmartDashboard.putNumber("Contour count", pipeline.filterContoursOutput().size());
+                int contourSize = pipeline.filterContoursOutput().size();
+                SmartDashboard.putNumber("Contour count", contourSize);
 
                 //contourStream.putFrame(contourOutptMat);
                 
                 //Making a Seperate if statement checking for 
                 //if there is something within the Contour Output
                 
-                if (pipeline.filterContoursOutput().size() >= 2){
+                if (contourSize >= 2){
 
                     SmartDashboard.putString("VisStage", "C");
                     
                     //Grabbing the two countour
                     /*Rect r1 = Imgproc.boundingRect(contourOutput.get(0));
                     Rect r2 = Imgproc.boundingRect(contourOutput.get(1));*/
-
                     //Passing the contours into usable format
                     MatOfPoint2f firstBox = new MatOfPoint2f( contourOutput.get(0).toArray() );                
                     MatOfPoint2f secondBox = new MatOfPoint2f( contourOutput.get(1).toArray() );
@@ -145,6 +145,8 @@ public class VisionThread extends Thread {
 
                     
                     
+                }else{
+                    targetCenterX = -1;
                 }
 
                 //SmartDashboard.putString("VisStage", "E");

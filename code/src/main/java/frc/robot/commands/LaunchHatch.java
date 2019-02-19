@@ -32,7 +32,6 @@ public class LaunchHatch extends Command {
   protected void initialize() {
 
     setTimeout(this.time);
-
     Robot.hatcher.set(true);
     SmartDashboard.putString("launch", "active");
     
