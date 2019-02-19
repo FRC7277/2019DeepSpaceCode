@@ -1,5 +1,15 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="Angle Box 2" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="212" y="339"/>
+	</widget>
+	<widget field="Angle Box 1" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="212" y="300"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
+		<location x="291" y="131"/>
+		<property name="Camera Choice" value=""/>
+	</static-widget>
 	<widget field="Contour count" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="13" y="366"/>
 	</widget>
@@ -53,12 +63,6 @@
 		<height>10</height>
 	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
-		<location x="290" y="136"/>
-		<width>327</width>
-		<height>246</height>
-		<property name="Camera Choice" value="Misc"/>
-	</static-widget>
-	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
 		<location x="290" y="4"/>
 		<property name="Camera Choice" value="Gray"/>
 	</static-widget>
@@ -82,12 +86,6 @@
 		<height>10</height>
 	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
-		<location x="290" y="136"/>
-		<width>327</width>
-		<height>246</height>
-		<property name="Camera Choice" value="Misc"/>
-	</static-widget>
-	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
 		<location x="290" y="4"/>
 		<property name="Camera Choice" value="Gray"/>
 	</static-widget>
@@ -97,5 +95,42 @@
 	</static-widget>
 </dashboard>
 <live-window>
+	<widget field="Ungrouped" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<widget field="Solenoid[0,0]" type="Solenoid" class="edu.wpi.first.smartdashboard.livewindow.elements.DigitalOutputController">
+			<location x="92" y="16"/>
+			<height>23</height>
+			<width>123</width>
+		</widget>
+		<widget field="SpeedControllerGroup[4]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="39"/>
+			<height>45</height>
+			<width>297</width>
+		</widget>
+		<widget field="DigitalInput[2]" type="Digital Input" class="edu.wpi.first.smartdashboard.livewindow.elements.DigitalInputDisplay">
+			<location x="6" y="84"/>
+			<height>20</height>
+			<width>297</width>
+		</widget>
+		<widget field="SpeedControllerGroup[1]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="104"/>
+			<height>45</height>
+			<width>297</width>
+		</widget>
+		<location x="16" y="26"/>
+		<width>309</width>
+		<height>155</height>
+	</widget>
+	<widget field="Intake" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<location x="23" y="5"/>
+	</widget>
+	<widget field="HatchPlacer" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<location x="22" y="15"/>
+	</widget>
+	<widget field="DriveTrain" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<location x="12" y="21"/>
+	</widget>
+	<widget field="ElevatorLift" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<location x="10" y="21"/>
+	</widget>
 </live-window>
 </xml>
