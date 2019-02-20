@@ -108,14 +108,14 @@ public class VisionThread extends Thread {
                 
                 SmartDashboard.putString("VisStage", "F");
 
-                SmartDashboard.putNumber("Contour count", pipeline.filterContoursOutput().size());
+                SmartDashboard.putNumber("Contour count", this.contourOutput.size());
 
                 //contourStream.putFrame(contourOutptMat);
                 
                 //Making a Seperate if statement checking for 
                 //if there is something within the Contour Output
                 
-                if (pipeline.filterContoursOutput().size() >= 2){
+                if (this.contourOutput.size() >= 2){
 
                     SmartDashboard.putString("VisStage", "C");
                     
@@ -126,6 +126,13 @@ public class VisionThread extends Thread {
                     //Passing the contours into usable format
                     MatOfPoint2f firstBox = new MatOfPoint2f( contourOutput.get(0).toArray() );                
                     MatOfPoint2f secondBox = new MatOfPoint2f( contourOutput.get(1).toArray() );
+
+                    Mat boxVisual = new Mat();
+                    Imgproc.cvtColor(firstBox, boxVisual, Imgproc.COLOR_BGR2GRAY);
+                    SmartDashboard.putNumber("Channels",boxVisual.channels());
+
+                    // Output onto smartdashboard?
+                    contourStream.putFrame(boxVisual/*pipeline.cvErodeOutput()*/);
 
                     //Creating a rotated rectangle that rotated at the right angle
                     RotatedRect outlineBox1 = Imgproc.minAreaRect(firstBox);
