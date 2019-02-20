@@ -17,11 +17,10 @@ import frc.robot.Robot;
 public class AutoAlign extends Command {
   
   private double centerX;
-
+  private double time = 2.0;
   public AutoAlign() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.drivetrain);
-
     
   }
 
@@ -33,7 +32,7 @@ public class AutoAlign extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      
+    setTimeout(this.time);
     //Settnig the center of the X value to the right on
     centerX = Robot.visionProcess.getTargetCenterX();
     //Making it so that the robot turn until the thing return zero
@@ -45,7 +44,7 @@ public class AutoAlign extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (Math.abs(centerX) <= 0.01);
+    return (Math.abs(centerX) <= 0.01) || isTimedOut();
   }
 
   // Called once after isFinished returns true

@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Compressor;
 
 import frc.robot.RobotMap;
 
@@ -20,18 +21,21 @@ public class HatchPlacer extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
+  private Compressor compressor;
   private Solenoid solenoid;
+  
 
   public HatchPlacer(int port) {
+    compressor = new Compressor(7);
+    solenoid = new Solenoid(7, 0);
     
-    solenoid = new Solenoid(0);
+    compressor.setClosedLoopControl(true);
 
   }
 
   public HatchPlacer() {
 
     this(RobotMap.solenoid);
-
   }
 
   public Solenoid getSolenoid() {
@@ -41,10 +45,15 @@ public class HatchPlacer extends Subsystem {
   public void set(boolean state) {
     this.solenoid.set(state);
   }
+  
+  public boolean getPressureSwitchState(){
+    return this.compressor.getPressureSwitchValue();
+  }
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    //setDefaultCommand(command);
   }
 }
