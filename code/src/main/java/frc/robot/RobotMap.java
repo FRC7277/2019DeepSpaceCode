@@ -49,7 +49,6 @@ public class RobotMap {
     public static final double elevatorTimePerInch = 0.01;
 
     // Pneumatic
-    public static final int pcm = 7;
     public static final int solenoid = 0;
     public static final double solenoidTime = 0.5;
 

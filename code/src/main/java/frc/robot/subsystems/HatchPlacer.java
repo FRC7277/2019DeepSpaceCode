@@ -26,8 +26,8 @@ public class HatchPlacer extends Subsystem {
   
 
   public HatchPlacer(int port) {
-    compressor = new Compressor(RobotMap.pcm);
-    solenoid = new Solenoid(RobotMap.pcm, RobotMap.solenoid);
+    compressor = new Compressor(7);
+    solenoid = new Solenoid(7, 0);
     
     compressor.setClosedLoopControl(true);
 
