@@ -14,13 +14,58 @@ package frc.robot;
  * floating around.
  */
 public class RobotMap {
-  // For example to map the left and right motors, you could define the
-  // following variables to use with your drivetrain subsystem.
-  // public static int leftMotor = 1;
-  // public static int rightMotor = 2;
+    
 
-  // If you are using multiple modules, make sure to define both the port
-  // number and the module. For example you with a rangefinder:
-  // public static int rangefinderPort = 1;
-  // public static int rangefinderModule = 1;
+    // If you are using multiple modules, make sure to define both the port
+    // number and the module. For example you with a rangefinder:
+    // public static int rangefinderPort = 1;
+    // public static int rangefinderModule = 1;
+
+    // Drive train motors
+    public static final int leftBack = 2;
+    public static final int leftFront = 4;
+    public static final int rightBack = 1;
+    public static final int rightFront = 3;
+
+    // Drive joy modifiers
+    public static final double zMod = 0.6;
+    
+    // Joystick number
+    public static final int joystick = 0;
+    public static final int controller = 1;
+
+    // Elevator lift motors
+    public static final int leftElevator = 5;
+    public static final int rightElevator = 6;
+
+    // Intake motors
+    public static final int rightIntake = 7;
+    public static final int leftIntake = 8;
+
+    // Elevator speed constant
+    public static final double elevatorModifier = 0.50;
+    public static final double elevatorTimeout = 10.0;
+    public static final double elevatorPassive = 0.3;
+    public static final double elevatorTimePerInch = 0.01;
+
+    // Pneumatic
+    public static final int pcm = 7;
+    public static final int solenoid = 0;
+    public static final double solenoidTime = 0.5;
+
+    // Controller button mappings
+    public static final int aButton = 1;
+    public static final int bButton = 2; //B button
+    public static final int xButton = 3;
+    public static final int yButton = 4;
+
+    public static final int lbButton = 5;
+    public static final int rbButton = 6;
+
+    //Joystick button mappings
+    public static final int joystickSideButton = 1;
+
+    // Limit switch references (Bottom to Top)
+    public static final int[] switches = {2};
+    
 }

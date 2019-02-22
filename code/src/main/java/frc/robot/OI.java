@@ -7,6 +7,18 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
+import frc.robot.RobotMap;
+import frc.robot.commands.LaunchHatch;
+import frc.robot.commands.PowerIntake;
+import frc.robot.commands.AutoAlign;
+import frc.robot.commands.elevator.TimedElevator;
+import frc.robot.commands.elevator.DistanceElevator;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -39,4 +51,64 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
+
+  /**
+   * Scales a double between -1 and 1 (inclusive) to provide
+   * smoother and more controlled movement vectors
+   */
+  public static double scaleJoystickInput(double input) {
+    /*
+    if (input >= 0) {
+      return (input * input);
+    } else {
+      return (input * -input);
+    }
+    */
+
+    return input;
+
+  }
+
+  private Joystick joystick = new Joystick(RobotMap.joystick);
+  private XboxController controller = new XboxController(RobotMap.controller);
+
+  private Button launchButton = new JoystickButton(controller, RobotMap.bButton);
+
+  private Button inButton = new JoystickButton(controller, RobotMap.xButton);
+  private Button outButton = new JoystickButton(controller, RobotMap.yButton);
+
+  private Button upButton = new JoystickButton(controller, RobotMap.lbButton);
+
+  private Button alignButton = new JoystickButton(joystick, RobotMap.joystickSideButton);
+
+  public OI() {
+    
+  }
+
+  /**
+   * Attaches buttons to commands
+   */
+  public void linkButtons() {
+
+    //Assigning commands to buttons
+    launchButton.whenPressed(new LaunchHatch());
+
+    inButton.whileHeld(new PowerIntake(-1));
+    outButton.whileHeld(new PowerIntake(1));
+
+    upButton.whenPressed(new DistanceElevator(40));
+
+    //alignButton.whenPressed(new AutoAlign());
+
+  }
+
+  //Getter for the Controller objects
+  public Joystick getJoystick() {
+    return this.joystick;
+  }
+
+  public XboxController getController() {
+    return this.controller;
+  }
+  
 }
