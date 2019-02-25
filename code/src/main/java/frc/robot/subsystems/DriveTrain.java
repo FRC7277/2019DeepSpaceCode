@@ -10,7 +10,9 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -27,10 +29,10 @@ public class DriveTrain extends Subsystem {
     // here. Call these from Commands.
     
     // Define motor object for each motor
-    private WPI_TalonSRX leftBack;
-    private WPI_TalonSRX rightBack;
-    private WPI_TalonSRX leftFront;
-    private WPI_TalonSRX rightFront;
+    private SpeedController leftBack;
+    private SpeedController rightBack;
+    private SpeedController leftFront;
+    private SpeedController rightFront;
     
     // Define left and right speedcontroller groups
     private SpeedControllerGroup left;

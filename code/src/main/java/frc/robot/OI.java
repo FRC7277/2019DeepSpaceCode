@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import frc.robot.RobotMap;
-import frc.robot.commands.LaunchHatch;
 import frc.robot.commands.PowerIntake;
 import frc.robot.commands.AutoAlign;
 import frc.robot.commands.elevator.TimedElevator;
@@ -72,8 +71,6 @@ public class OI {
   private Joystick joystick = new Joystick(RobotMap.joystick);
   private XboxController controller = new XboxController(RobotMap.controller);
 
-  private Button launchButton = new JoystickButton(controller, RobotMap.bButton);
-
   private Button inButton = new JoystickButton(controller, RobotMap.xButton);
   private Button outButton = new JoystickButton(controller, RobotMap.yButton);
 
@@ -91,8 +88,6 @@ public class OI {
   public void linkButtons() {
 
     //Assigning commands to buttons
-    launchButton.whenPressed(new LaunchHatch());
-
     inButton.whileHeld(new PowerIntake(-1));
     outButton.whileHeld(new PowerIntake(1));
 

@@ -18,7 +18,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // Import subsystems
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ElevatorLift;
-import frc.robot.subsystems.HatchPlacer;
 import frc.robot.subsystems.Intake;
 
 // Import utils
@@ -38,7 +37,6 @@ public class Robot extends TimedRobot {
     public static OI oi = new OI();
 
     // Create subsystems used by buttons
-    public static HatchPlacer hatcher = new HatchPlacer();
     public static Intake intake = new Intake();
     
 
