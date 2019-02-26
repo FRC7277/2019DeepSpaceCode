@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Robot;
 import frc.robot.OI;
@@ -102,7 +101,7 @@ public class DriveTrain extends Subsystem {
     public void driveCartesian(Joystick joy){
         drive.driveCartesian(Robot.oi.scaleJoystickInput(-joy.getY()), 
                              Robot.oi.scaleJoystickInput(joy.getX()),
-                             Robot.oi.scaleJoystickInput(joy.getZ()/*SmartDashboard.getNumber("ZMod", RobotMap.zMod)*/));
+                             Robot.oi.scaleJoystickInput(joy.getZ()));
     }
 
     public void driveCartesian(double Y, double X, double Z){

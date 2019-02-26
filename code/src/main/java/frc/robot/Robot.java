@@ -20,10 +20,6 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ElevatorLift;
 import frc.robot.subsystems.Intake;
 
-// Import utils
-import frc.robot.utils.GripPipeline;
-import frc.robot.utils.VisionThread;
-
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -43,12 +39,6 @@ public class Robot extends TimedRobot {
     // Create subsystem that use joysticks
     public static DriveTrain drivetrain = new DriveTrain();
     public static ElevatorLift elevator = new ElevatorLift();
-    
-    //Create GripPipeline Object
-    public static GripPipeline pipeline = new GripPipeline();
-
-    // Create VisionThread
-    public static VisionThread visionProcess = new VisionThread();
 
     // Create globalish variable for elevator commands to track
     public static int lastEP = 0;
@@ -62,9 +52,6 @@ public class Robot extends TimedRobot {
 
         // Link buttons to commands
         //oi.linkButtons();
-
-        // Create thread for processing camera vision (asynchrous)
-        //TODO If vission used visionProcess.start();
 
     }
 
@@ -125,8 +112,7 @@ public class Robot extends TimedRobot {
         //Remember to cancel an autonomous command if we run one
 
         // Create input keys
-        SmartDashboard.putNumber("ElPassive", RobotMap.elevatorPassive);
-        SmartDashboard.putNumber("ZMod", RobotMap.zMod);
+        SmartDashboard.putNumber("ElevatorPassive", RobotMap.elevatorPassive);
         
     }
 
