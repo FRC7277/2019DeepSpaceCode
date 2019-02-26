@@ -56,8 +56,8 @@ public class DriveTrain extends Subsystem {
         this.rightFront = new Talon(rf);
 
         // Fix motor orientations
-        this.leftBack.setInverted(true);
-        this.rightFront.setInverted(true);
+        this.rightBack.setInverted(true);
+        this.leftFront.setInverted(true);
         
         // Create groups of controllers
         this.left = new SpeedControllerGroup(this.leftBack, this.leftFront);
