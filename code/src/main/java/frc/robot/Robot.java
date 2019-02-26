@@ -61,10 +61,10 @@ public class Robot extends TimedRobot {
     public void robotInit() {
 
         // Link buttons to commands
-        oi.linkButtons();
+        //oi.linkButtons();
 
         // Create thread for processing camera vision (asynchrous)
-        visionProcess.start();
+        //TODO If vission used visionProcess.start();
 
     }
 

@@ -14,8 +14,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import frc.robot.RobotMap;
 import frc.robot.commands.PowerIntake;
-import frc.robot.commands.AutoAlign;
-import frc.robot.commands.elevator.TimedElevator;
 import frc.robot.commands.elevator.DistanceElevator;
 
 /**
@@ -64,7 +62,7 @@ public class OI {
     }
     */
 
-    return input;
+    return input*0.5;
 
   }
 
@@ -75,8 +73,6 @@ public class OI {
   private Button outButton = new JoystickButton(controller, RobotMap.yButton);
 
   private Button upButton = new JoystickButton(controller, RobotMap.lbButton);
-
-  private Button alignButton = new JoystickButton(joystick, RobotMap.joystickSideButton);
 
   public OI() {
     

@@ -8,8 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -26,35 +25,21 @@ public class ElevatorLift extends Subsystem {
     // here. Call these from Commands.
     
     // Define motor object for each motor
-    private SpeedController left;
-    private SpeedController right;
-    
-    // Define speed controller group
-    private SpeedControllerGroup main;
+    private SpeedController motor;
 
     // Define switch array
     private DigitalInput[] switches;
-    
-    // Define modifier reference
-    private double modifier;
 
     /**
      * Takes 2 port-integers, for left and right motor
      */
-    public ElevatorLift(int left, int right, double modifier) {
+    public ElevatorLift(int motor) {
         
         // Create Motor objects using parameters
-        this.left = new WPI_VictorSPX(left);
-        this.right = new WPI_VictorSPX(right);
-        
-        // Create group of controllers
-        this.main = new SpeedControllerGroup(this.left, this.right);
+        this.motor = new Talon(motor);
 
         // Create DI references to limit switches
         switches = new DigitalInput[]{new DigitalInput(RobotMap.switches[0])};
-
-        // Reference modifier
-        this.modifier = modifier;
         
     }
     
@@ -64,15 +49,15 @@ public class ElevatorLift extends Subsystem {
     public ElevatorLift() {
         
         // Pass robotmap into DI constructor
-        this(RobotMap.leftElevator, RobotMap.rightElevator, RobotMap.elevatorModifier);
+        this(RobotMap.elevatorMotor);
 
     }
 
     /**
      * Accessor for the motor group
      */
-    public SpeedControllerGroup getMotors() {
-        return this.main;
+    public SpeedController getMotor() {
+        return this.motor;
     }
 
     /**
@@ -99,7 +84,7 @@ public class ElevatorLift extends Subsystem {
         vector = vector < -1 ? -1 : vector;
 
         // Set speed of speed controllers (multiplied by modifiers)
-        main.set(-vector);
+        motor.set(-vector);
 
     }
     

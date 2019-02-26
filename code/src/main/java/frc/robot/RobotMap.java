@@ -22,10 +22,10 @@ public class RobotMap {
     // public static int rangefinderModule = 1;
 
     // Drive train motors
-    public static final int leftBack = 2;
-    public static final int leftFront = 4;
-    public static final int rightBack = 1;
-    public static final int rightFront = 3;
+    public static final int leftBack = 3;
+    public static final int leftFront = 2;
+    public static final int rightBack = 0;
+    public static final int rightFront = 1;
 
     // Drive joy modifiers
     public static final double zMod = 0.6;
@@ -35,8 +35,7 @@ public class RobotMap {
     public static final int controller = 1;
 
     // Elevator lift motors
-    public static final int leftElevator = 5;
-    public static final int rightElevator = 6;
+    public static final int elevatorMotor = 4;
 
     // Intake motors
     public static final int rightIntake = 7;
@@ -47,11 +46,6 @@ public class RobotMap {
     public static final double elevatorTimeout = 10.0;
     public static final double elevatorPassive = 0.3;
     public static final double elevatorTimePerInch = 0.01;
-
-    // Pneumatic
-    public static final int pcm = 7;
-    public static final int solenoid = 0;
-    public static final double solenoidTime = 0.5;
 
     // Controller button mappings
     public static final int aButton = 1;

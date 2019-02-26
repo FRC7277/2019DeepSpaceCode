@@ -38,7 +38,7 @@ public class JoystickDrive extends Command {
   @Override
   protected void execute() {
     
-    Robot.drivetrain.arcadeDrive(this.joy);
+    Robot.drivetrain.driveCartesian(this.joy);
 
     SmartDashboard.putString("Drive X:", Double.toString(this.joy.getX()));
     SmartDashboard.putString("Drive Z:", Double.toString(this.joy.getZ()));
@@ -55,7 +55,7 @@ public class JoystickDrive extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.drivetrain.getDrive().arcadeDrive(0, 0);
+    Robot.drivetrain.driveCartesian(0, 0, 0);
   }
 
   // Called when another command which requires one or more of the same

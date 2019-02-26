@@ -8,8 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -39,8 +38,8 @@ public class DriveTrain extends Subsystem {
     private SpeedControllerGroup right;
     
     // Define differential drive
-    private DifferentialDrive m_drive;
-    
+    //private DifferentialDrive m_drive;
+    private MecanumDrive drive;
     // Define joystick
     private Joystick joy;
     
@@ -51,18 +50,23 @@ public class DriveTrain extends Subsystem {
     public DriveTrain(int lb, int rb, int lf, int rf, Joystick joy) {
         
         // Create Motor objects using parameters
-        this.leftBack = new WPI_TalonSRX(lb);
-        this.rightBack = new WPI_TalonSRX(rb);
-        this.leftFront = new WPI_TalonSRX(lf);
-        this.rightFront = new WPI_TalonSRX(rf);
+        this.leftBack = new Talon(lb);
+        this.rightBack = new Talon(rb);
+        this.leftFront = new Talon(lf);
+        this.rightFront = new Talon(rf);
+
+        // Fix motor orientations
+        this.leftBack.setInverted(true);
+        this.rightFront.setInverted(true);
         
         // Create groups of controllers
         this.left = new SpeedControllerGroup(this.leftBack, this.leftFront);
         this.right = new SpeedControllerGroup(this.rightBack, this.rightFront);
         
-        // Create diff drive
-        this.m_drive = new DifferentialDrive(left, right);
-        
+        // Create drive
+        //this.m_drive = new DifferentialDrive(left, right);
+        this.drive = new MecanumDrive(leftFront, leftBack, rightFront, rightBack);
+
         // Reference joystick
         this.joy = joy;
         
@@ -91,12 +95,20 @@ public class DriveTrain extends Subsystem {
         setDefaultCommand(new JoystickDrive(this.joy));
     }
 
-    public DifferentialDrive getDrive() {
-        return this.m_drive;   
+    public MecanumDrive getDrive() {
+        return this.drive;   
     }
   
-    public void arcadeDrive(Joystick joy){
-          m_drive.arcadeDrive(OI.scaleJoystickInput(-joy.getY()), 
-                              OI.scaleJoystickInput(joy.getZ()*SmartDashboard.getNumber("ZMod", RobotMap.zMod)));
+    public void driveCartesian(Joystick joy){
+        drive.driveCartesian(OI.scaleJoystickInput(-joy.getY()), 
+                             OI.scaleJoystickInput(joy.getX()),
+                             OI.scaleJoystickInput(joy.getZ()/*SmartDashboard.getNumber("ZMod", RobotMap.zMod)*/));
     }
+
+    public void driveCartesian(double Y, double X, double Z){
+
+        drive.driveCartesian(Y, X, Z);
+
+    }
+
 }
