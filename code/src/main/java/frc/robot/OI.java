@@ -49,11 +49,19 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
 
+  private Joystick joystick = new Joystick(RobotMap.joystick);
+  private XboxController controller = new XboxController(RobotMap.controller);
+
+  private Button inButton = new JoystickButton(controller, RobotMap.xButton);
+  private Button outButton = new JoystickButton(controller, RobotMap.yButton);
+
+  private Button upButton = new JoystickButton(controller, RobotMap.lbButton);
+
   /**
    * Scales a double between -1 and 1 (inclusive) to provide
    * smoother and more controlled movement vectors
    */
-  public static double scaleJoystickInput(double input) {
+  public double scaleJoystickInput(double input) {
     /*
     if (input >= 0) {
       return (input * input);
@@ -62,17 +70,21 @@ public class OI {
     }
     */
 
-    return input*0.5;
+    // TODO the 0.5 is a safety feature that could be removed
+    return input*this.getSlider(joystick)*0.5;
 
   }
 
-  private Joystick joystick = new Joystick(RobotMap.joystick);
-  private XboxController controller = new XboxController(RobotMap.controller);
+  /**
+   * Gets the value of a slider from 0-1
+   * @param joy
+   * @return
+   */
+  public double getSlider(Joystick joy) {
 
-  private Button inButton = new JoystickButton(controller, RobotMap.xButton);
-  private Button outButton = new JoystickButton(controller, RobotMap.yButton);
+    return (joystick.getThrottle()+1.0)/2.0;
 
-  private Button upButton = new JoystickButton(controller, RobotMap.lbButton);
+  }
 
   public OI() {
     

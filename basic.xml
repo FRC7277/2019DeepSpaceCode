@@ -1,5 +1,8 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="Drive Throttle: " type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="133"/>
+	</widget>
 	<widget field="Angle Box 2" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="21" y="309"/>
 		<height>20</height>
@@ -91,5 +94,39 @@
 	</static-widget>
 </dashboard>
 <live-window>
+	<widget field="DriveTrain" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<location x="15" y="28"/>
+	</widget>
+	<widget field="ElevatorLift" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<location x="3" y="27"/>
+	</widget>
+	<widget field="Ungrouped" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<widget field="DigitalInput[2]" type="Digital Input" class="edu.wpi.first.smartdashboard.livewindow.elements.DigitalInputDisplay">
+			<location x="6" y="16"/>
+			<height>20</height>
+			<width>297</width>
+		</widget>
+		<widget field="SpeedControllerGroup[1]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="36"/>
+			<height>45</height>
+			<width>297</width>
+		</widget>
+		<widget field="SpeedControllerGroup[3]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="81"/>
+			<height>45</height>
+			<width>297</width>
+		</widget>
+		<widget field="SpeedControllerGroup[2]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="126"/>
+			<height>45</height>
+			<width>297</width>
+		</widget>
+		<location x="31" y="8"/>
+		<width>309</width>
+		<height>177</height>
+	</widget>
+	<widget field="Intake" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<location x="20" y="8"/>
+	</widget>
 </live-window>
 </xml>

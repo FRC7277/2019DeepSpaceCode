@@ -44,7 +44,8 @@ public class RobotMap {
     // Elevator speed constant
     public static final double elevatorModifier = 0.50;
     public static final double elevatorTimeout = 10.0;
-    public static final double elevatorPassive = 0.3;
+    // Passive voltage always sent to elevator on top of inputs
+    public static final double elevatorPassive = 0;
     public static final double elevatorTimePerInch = 0.01;
 
     // Controller button mappings

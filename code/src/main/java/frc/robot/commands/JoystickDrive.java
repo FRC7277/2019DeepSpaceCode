@@ -42,7 +42,7 @@ public class JoystickDrive extends Command {
 
     SmartDashboard.putString("Drive X:", Double.toString(this.joy.getX()));
     SmartDashboard.putString("Drive Z:", Double.toString(this.joy.getZ()));
-    SmartDashboard.putString("Drive Y:", Double.toString(this.joy.getY()));
+    SmartDashboard.putString("Drive Y:", Double.toString(this.joy.getY()));;
     
   }
 

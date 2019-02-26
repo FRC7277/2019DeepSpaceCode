@@ -100,9 +100,9 @@ public class DriveTrain extends Subsystem {
     }
   
     public void driveCartesian(Joystick joy){
-        drive.driveCartesian(OI.scaleJoystickInput(-joy.getY()), 
-                             OI.scaleJoystickInput(joy.getX()),
-                             OI.scaleJoystickInput(joy.getZ()/*SmartDashboard.getNumber("ZMod", RobotMap.zMod)*/));
+        drive.driveCartesian(Robot.oi.scaleJoystickInput(-joy.getY()), 
+                             Robot.oi.scaleJoystickInput(joy.getX()),
+                             Robot.oi.scaleJoystickInput(joy.getZ()/*SmartDashboard.getNumber("ZMod", RobotMap.zMod)*/));
     }
 
     public void driveCartesian(double Y, double X, double Z){
