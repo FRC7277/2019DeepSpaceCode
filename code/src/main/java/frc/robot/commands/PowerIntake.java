@@ -45,7 +45,6 @@ public class PowerIntake extends Command {
   @Override
   protected void end() {
     Robot.intake.setSpeed(0.0);
-    SmartDashboard.putString("intake", "0");
   }
 
   // Called when another command which requires one or more of the same

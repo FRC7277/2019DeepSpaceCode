@@ -27,9 +27,6 @@ public class ElevatorLift extends Subsystem {
     // Define motor object for each motor
     private SpeedController motor;
 
-    // Define switch array
-    private DigitalInput[] switches;
-
     /**
      * Takes 2 port-integers, for left and right motor
      */
@@ -37,9 +34,6 @@ public class ElevatorLift extends Subsystem {
         
         // Create Motor objects using parameters
         this.motor = new Talon(motor);
-
-        // Create DI references to limit switches
-        switches = new DigitalInput[]{new DigitalInput(RobotMap.switches[0])};
         
     }
     
@@ -60,13 +54,6 @@ public class ElevatorLift extends Subsystem {
         return this.motor;
     }
 
-    /**
-     * Acsessor for the limit switches
-     */
-    public DigitalInput[] getSwitches() {
-        return this.switches;
-    }
-
     // Method to set motors speed
     /**
      * Sets the speed of the elevator lift motors
@@ -74,10 +61,8 @@ public class ElevatorLift extends Subsystem {
      */
     public void setSpeed(double speed) {
 
-        SmartDashboard.putNumber("ELPOut", SmartDashboard.getNumber("ElPassive", RobotMap.elevatorPassive));
-
         // Add speed required to maintain position
-        double vector = speed + SmartDashboard.getNumber("ElPassive", RobotMap.elevatorPassive);
+        double vector = speed + SmartDashboard.getNumber("ElevatorPassive", RobotMap.elevatorPassive);
 
         // Cap in (-1, 1) to prevent runtime error
         vector = vector > 1 ? 1 : vector;

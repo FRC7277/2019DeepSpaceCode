@@ -96,8 +96,10 @@ public class OI {
   public void linkButtons() {
 
     //Assigning commands to buttons
+    /* Outdated, claws will be joystick
     inButton.whileHeld(new PowerIntake(-1));
     outButton.whileHeld(new PowerIntake(1));
+    */
 
     upButton.whenPressed(new DistanceElevator(40));
 

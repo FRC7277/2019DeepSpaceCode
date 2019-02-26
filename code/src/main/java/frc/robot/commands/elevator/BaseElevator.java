@@ -14,8 +14,6 @@ import frc.robot.Robot;
 
 public class BaseElevator extends Command {
 
-  private DigitalInput[] switches;
-
   public BaseElevator() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -50,30 +48,6 @@ public class BaseElevator extends Command {
   @Override
   protected void interrupted() {
     this.end();
-  }
-
-  /**
-   * 
-   * @return The index in RobotMap.switches of the DI the elevator is on
-   */
-  public int getPosition() {
-
-    // Iterate through each DigitalInput
-    for (int x = 0; x < Robot.elevator.getSwitches().length; x++) {
-
-      // Check if the switch is pressed and return if it is
-      if (Robot.elevator.getSwitches()[x].get()) {
-        return x;
-      }
-
-    }
-    // -1 signal to represent no switches pressed
-    return -1;
-
-  }
-
-  public DigitalInput[] getSwitches() {
-    return switches;
   }
 
 }

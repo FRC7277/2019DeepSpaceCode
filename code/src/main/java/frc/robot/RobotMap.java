@@ -26,9 +26,6 @@ public class RobotMap {
     public static final int rightFront = 2;
     public static final int leftBack = 0;
     public static final int leftFront = 1;
-
-    // Drive joy modifiers
-    public static final double zMod = 0.6;
     
     // Joystick number
     public static final int joystick = 0;
@@ -43,9 +40,9 @@ public class RobotMap {
 
     // Elevator speed constant
     public static final double elevatorModifier = 0.50;
-    public static final double elevatorTimeout = 10.0;
     // Passive voltage always sent to elevator on top of inputs
     public static final double elevatorPassive = 0;
+    // Ratio between elevator travel time and distance (will be outdated with encoder)
     public static final double elevatorTimePerInch = 0.01;
 
     // Controller button mappings
@@ -59,8 +56,5 @@ public class RobotMap {
 
     //Joystick button mappings
     public static final int joystickSideButton = 1;
-
-    // Limit switch references (Bottom to Top)
-    public static final int[] switches = {2};
     
 }
