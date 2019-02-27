@@ -37,6 +37,14 @@ public class RobotMap {
     // Intake motors ports
     public static final int intake = 5;
 
+    // Encoder ports
+    public static final int encoderAChannel = 8;
+    public static final int encoderBChannel = 9;
+
+    // Encoder tick to distance ratio
+    // This is the distance the elevator rises (in inches) in 1 pulse of the encoder
+    public static final double encoderPulseDistance = 1;
+
     // Elevator speed constant
     public static final double elevatorModifier = 0.50;
     // Passive voltage always sent to elevator on top of inputs
