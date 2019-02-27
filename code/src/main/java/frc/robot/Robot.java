@@ -34,14 +34,10 @@ public class Robot extends TimedRobot {
 
     // Create subsystems used by buttons
     public static Intake intake = new Intake();
-    
 
     // Create subsystem that use joysticks
     public static DriveTrain drivetrain = new DriveTrain();
     public static ElevatorLift elevator = new ElevatorLift();
-
-    // Create globalish variable for elevator commands to track
-    public static int lastEP = 0;
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -51,7 +47,7 @@ public class Robot extends TimedRobot {
     public void robotInit() {
 
         // Link buttons to commands
-        //oi.linkButtons();
+        oi.linkButtons();
 
     }
 

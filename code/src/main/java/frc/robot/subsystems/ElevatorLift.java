@@ -69,7 +69,7 @@ public class ElevatorLift extends Subsystem {
         vector = vector < -1 ? -1 : vector;
 
         // Set speed of speed controllers (multiplied by modifiers)
-        motor.set(-vector);
+        motor.set(vector);
 
     }
     

@@ -8,8 +8,9 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.DMC60;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.SpeedController;
 
 //import frc.robot.commands.ControlElevator;
 
@@ -24,24 +25,16 @@ public class Intake extends Subsystem {
     // here. Call these from Commands.
     
     // Define motor object for each motor
-    private DMC60 left;
-    private DMC60 right;
-    
-    // Define speed controller group
-    private SpeedControllerGroup main;
+    private SpeedController motor;
     
     /**
      * Takes 4 port integers, left-back, right-back, left-front, right-front
      * Takes a joystick object to pass to the default JoystickDrive command
      */
-    public Intake(int left, int right) {
+    public Intake(int motor) {
         
         // Create Motor objects using parameters
-        this.left = new DMC60(left);
-        this.right = new DMC60(right);
-        
-        // Create group of controllers
-        this.main = new SpeedControllerGroup(this.left, this.right);
+        this.motor = new Talon(motor);
         
     }
     
@@ -51,15 +44,15 @@ public class Intake extends Subsystem {
     public Intake() {
         
         // Pass robotmap into DI constructor
-        this(RobotMap.leftIntake, RobotMap.rightIntake);
+        this(RobotMap.intake);
 
     }
     
     /**
-     * Accessor for the motor group
+     * Accessor for the motor
      */
-    public SpeedControllerGroup getMotors() {
-        return this.main;
+    public SpeedController getMotor() {
+        return this.motor;
     }
 
     // Method to set motors speed
@@ -68,7 +61,7 @@ public class Intake extends Subsystem {
      * @param speed Value to set the motor speed to
      */
     public void setSpeed(double speed) {
-        main.set(speed);
+        motor.set(speed);
     }
     
     @Override
