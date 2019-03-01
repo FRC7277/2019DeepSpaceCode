@@ -5,29 +5,22 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.elevator;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import frc.robot.commands.elevator.BaseElevator;
 import frc.robot.Robot;
 
-public class PowerIntake extends Command {
-  private double power;
-  public PowerIntake(double power) {
+public class AlignElevator extends BaseElevator {
+  public AlignElevator() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.intake);
-    this.power = power;
-
+    requires(Robot.elevator);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.intake.setSpeed(this.power);
-    SmartDashboard.putString("intake", Double.toString(this.power));;
-    
+    Robot.elevator.resetEncoder();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -38,21 +31,17 @@ public class PowerIntake extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.intake.setSpeed(0.0);
-    SmartDashboard.putString("intake", "0");;
-
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    this.end();
   }
 }

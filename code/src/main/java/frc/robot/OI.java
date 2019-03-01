@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.RobotMap;
 import frc.robot.commands.PowerIntake;
 import frc.robot.commands.elevator.DistanceElevator;
+import frc.robot.commands.elevator.AlignElevator;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -56,6 +57,8 @@ public class OI {
   private Button outButton = new JoystickButton(controller, RobotMap.yButton);
 
   private Button upButton = new JoystickButton(controller, RobotMap.lbButton);
+
+  private Button resetButton = new JoystickButton(controller, RobotMap.leftJoyButton);
 
   /**
    * Scales a double between -1 and 1 (inclusive) to provide
@@ -100,6 +103,8 @@ public class OI {
     outButton.whileHeld(new PowerIntake(1));
 
     upButton.whenPressed(new DistanceElevator(40));
+
+    resetButton.whenPressed(new AlignElevator());
 
     //alignButton.whenPressed(new AutoAlign());
 

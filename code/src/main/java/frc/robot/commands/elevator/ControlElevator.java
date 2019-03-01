@@ -48,6 +48,8 @@ public class ControlElevator extends BaseElevator {
     //SmartDashboard.putNumber("Elevator", vector);
     SmartDashboard.putString("Elevator Speed", Double.toString(vector));
 
+    SmartDashboard.putNumber("Elevator Distance", Robot.elevator.getDistance());
+
     // Set spped of elevator
     Robot.elevator.setSpeed(vector);
 

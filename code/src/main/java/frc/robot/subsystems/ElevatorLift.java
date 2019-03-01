@@ -43,6 +43,9 @@ public class ElevatorLift extends Subsystem {
 
         // Set encoder scale factor
         this.encoder.setDistancePerPulse(RobotMap.encoderPulseDistance);
+
+        // Reset encoder
+        this.resetEncoder();
         
     }
     
@@ -104,7 +107,7 @@ public class ElevatorLift extends Subsystem {
     /**
      * Reset the encoder counter
      */
-    public void reset() {
+    public void resetEncoder() {
 
         this.encoder.reset();
 
