@@ -1,5 +1,8 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="intake" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="10" y="202"/>
+	</widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
 		<location x="65" y="7"/>
 		<width>234</width>
@@ -9,7 +12,68 @@
 		<location x="5" y="4"/>
 		<property name="Text" value="Connection"/>
 	</static-widget>
+	<widget field="Elevator Distance" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="11" y="172"/>
+	</widget>
+	<widget field="Drive Z:" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="12" y="82"/>
+	</widget>
+	<widget field="Drive Y:" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="15" y="59"/>
+	</widget>
+	<widget field="ElevatorPassive" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="9" y="147"/>
+		<width>174</width>
+	</widget>
+	<widget field="Elevator Speed" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="12" y="123"/>
+	</widget>
+	<widget field="Drive X:" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="14" y="39"/>
+	</widget>
 </dashboard>
 <live-window>
+	<widget field="ElevatorPID" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<widget field="PIDController" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
+			<location x="6" y="16"/>
+			<height>155</height>
+			<width>144</width>
+		</widget>
+		<location x="0" y="37"/>
+		<width>156</width>
+		<height>177</height>
+	</widget>
+	<widget field="ChainEncoder" type="Subsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
+		<location x="0" y="223"/>
+	</widget>
+	<widget field="DriveTrain" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<location x="1" y="14"/>
+	</widget>
+	<widget field="Ungrouped" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<widget field="SpeedControllerGroup[1]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="16"/>
+			<height>45</height>
+			<width>297</width>
+		</widget>
+		<widget field="Encoder[0]" type="Quadrature Encoder" class="edu.wpi.first.smartdashboard.livewindow.elements.EncoderDisplay">
+			<location x="6" y="61"/>
+			<height>97</height>
+			<width>297</width>
+		</widget>
+		<widget field="SpeedControllerGroup[2]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="158"/>
+			<height>45</height>
+			<width>297</width>
+		</widget>
+		<location x="31" y="13"/>
+		<width>309</width>
+		<height>209</height>
+	</widget>
+	<widget field="ElevatorLift" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<location x="10" y="10"/>
+	</widget>
+	<widget field="Intake" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<location x="19" y="28"/>
+	</widget>
 </live-window>
 </xml>
