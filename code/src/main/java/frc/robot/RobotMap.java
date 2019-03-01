@@ -57,6 +57,8 @@ public class RobotMap {
     public static final double elevatorPassive = 0.07;
     // Ratio between elevator travel time and distance (will be outdated with encoder)
     public static final double elevatorTimePerInch = 0.01;
+    // Tolerance for elevator position (in inches)
+    public static final double elevatorTolerance = 1;
 
     // Controller button mappings
     public static final int aButton = 1;
