@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import frc.robot.RobotMap;
 import frc.robot.commands.PowerIntake;
-import frc.robot.commands.elevator.DistanceElevator;
+import frc.robot.commands.elevator.SetElevator;
 import frc.robot.commands.elevator.AlignElevator;
 
 /**
@@ -102,7 +102,7 @@ public class OI {
     inButton.whileHeld(new PowerIntake(-1));
     outButton.whileHeld(new PowerIntake(1));
 
-    upButton.whenPressed(new DistanceElevator(40));
+    upButton.whenPressed(new SetElevator(32));
 
     resetButton.whenPressed(new AlignElevator());
 

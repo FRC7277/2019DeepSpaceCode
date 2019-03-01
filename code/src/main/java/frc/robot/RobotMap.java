@@ -57,6 +57,15 @@ public class RobotMap {
     public static final double elevatorPassive = 0.07;
     // Ratio between elevator travel time and distance (will be outdated with encoder)
     public static final double elevatorTimePerInch = 0.01;
+    // Maximum elevator motor speed (prevent stress on motors and elevator)
+    // TODO could probably be put on SmartDashboard for live manipulation
+    public static final double maximumElevatorSpeed = 0.5;
+
+    // Elevator PID settings
+    // PID values
+    public static final double kP = 0.1;
+    public static final double kI = 0.0;
+    public static final double kD = 0.0;
     // Tolerance for elevator position (in inches)
     public static final double elevatorTolerance = 1;
 

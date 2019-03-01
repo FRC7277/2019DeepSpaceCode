@@ -20,6 +20,7 @@ import frc.robot.RobotMap;
  * Elevator subsystem.
  */
 public class ElevatorLift extends Subsystem {
+    // TODO Depreceated, replaced by ElevatorPID
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     

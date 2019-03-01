@@ -33,12 +33,13 @@ public class ElevatorPID extends PIDSubsystem {
     public ElevatorPID(int motor) {
         
         // Call super constructor with subsystem name and PID values
-        super("ElevatorPID", 1.0, 0.0, 0.0);
+        // TODO these should be moved to RobotMap
+        super("ElevatorPID", RobotMap.kP, RobotMap.kI, RobotMap.kD);
 
         // Configure PID system
         // Cap motor outputs to [-1, 1]
         setOutputRange(-1, 1);
-        // Reference tolerance from RobotMap
+        // Reference tolerance from RobotMap TODO is this a static reference
         setAbsoluteTolerance(RobotMap.elevatorTolerance);
         // Set continuos to false (not exactly sure what this does, pulled from docs)
         getPIDController().setContinuous(false);
@@ -75,6 +76,7 @@ public class ElevatorPID extends PIDSubsystem {
         // Add speed required to maintain position
         double vector = speed + SmartDashboard.getNumber("ElevatorPassive", RobotMap.elevatorPassive);
 
+        // TODO add RobotMap maximums
         // Cap in (-1, 1) to prevent runtime error
         vector = vector > 1 ? 1 : vector;
         vector = vector < -1 ? -1 : vector;

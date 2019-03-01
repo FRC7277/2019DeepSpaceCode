@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // Import subsystems
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ElevatorLift;
+import frc.robot.subsystems.ElevatorPID;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.ChainEncoder;
 
@@ -38,7 +39,7 @@ public class Robot extends TimedRobot {
 
     // Create subsystem that use joysticks
     public static DriveTrain drivetrain = new DriveTrain();
-    public static ElevatorLift elevator = new ElevatorLift();
+    public static ElevatorPID elevator = new ElevatorPID();
 
     // Encoder subsystem
     public static ChainEncoder elevatorEncoder = new ChainEncoder();
