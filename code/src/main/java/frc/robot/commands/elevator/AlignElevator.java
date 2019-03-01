@@ -14,13 +14,13 @@ public class AlignElevator extends BaseElevator {
   public AlignElevator() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.elevator);
+    requires(Robot.elevatorEncoder);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.elevator.resetEncoder();
+    Robot.elevatorEncoder.reset();
   }
 
   // Called repeatedly when this Command is scheduled to run

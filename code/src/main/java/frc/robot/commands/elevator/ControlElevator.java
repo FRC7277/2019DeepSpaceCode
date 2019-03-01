@@ -23,6 +23,10 @@ public class ControlElevator extends BaseElevator {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     super();
+    // TODO this subsystem uses elevatorEncoder, but only reads
+    // because I dont want it being interrupted if the encoder is used by another
+    // command (i.e. AlignElevator) it is not calling requires()
+    // This may be something that should be fixed
 
     this.controller = controller;
 
@@ -48,7 +52,7 @@ public class ControlElevator extends BaseElevator {
     //SmartDashboard.putNumber("Elevator", vector);
     SmartDashboard.putString("Elevator Speed", Double.toString(vector));
 
-    SmartDashboard.putNumber("Elevator Distance", Robot.elevator.getDistance());
+    SmartDashboard.putNumber("Elevator Distance", Robot.elevatorEncoder.getDistance());
 
     // Set spped of elevator
     Robot.elevator.setSpeed(vector);

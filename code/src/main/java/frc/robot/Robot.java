@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ElevatorLift;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.ChainEncoder;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -38,6 +39,9 @@ public class Robot extends TimedRobot {
     // Create subsystem that use joysticks
     public static DriveTrain drivetrain = new DriveTrain();
     public static ElevatorLift elevator = new ElevatorLift();
+
+    // Encoder subsystem
+    public static ChainEncoder elevatorEncoder = new ChainEncoder();
 
     /**
      * This function is run when the robot is first started up and should be used

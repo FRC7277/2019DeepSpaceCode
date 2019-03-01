@@ -10,7 +10,6 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.commands.elevator.ControlElevator;
@@ -27,25 +26,13 @@ public class ElevatorLift extends Subsystem {
     // Define motor object for each motor
     private SpeedController motor;
 
-    // Define encoder type
-    private Encoder encoder;
-
     /**
      * Takes 2 port-integers, for left and right motor
      */
-    public ElevatorLift(int motor, int encoderAChannel, int encoderBChannel) {
+    public ElevatorLift(int motor) {
         
         // Create Motor objects using parameters
         this.motor = new Talon(motor);
-
-        // Create encoder object using channel parameters
-        this.encoder = new Encoder(encoderAChannel, encoderBChannel);
-
-        // Set encoder scale factor
-        this.encoder.setDistancePerPulse(RobotMap.encoderPulseDistance);
-
-        // Reset encoder
-        this.resetEncoder();
         
     }
     
@@ -55,7 +42,7 @@ public class ElevatorLift extends Subsystem {
     public ElevatorLift() {
         
         // Pass robotmap into DI constructor
-        this(RobotMap.elevatorMotor, RobotMap.encoderAChannel, RobotMap.encoderBChannel);
+        this(RobotMap.elevatorMotor);
 
     }
 
@@ -64,15 +51,6 @@ public class ElevatorLift extends Subsystem {
      */
     public SpeedController getMotor() {
         return this.motor;
-    }
-
-    /**
-     * Returns an Encoder (WPI) object that is attached to the elevator
-     * Used when more control over the encoder is needed than the subsystem class provides
-     * @return Elevator encoder
-     */
-    public Encoder getEncoder() {
-        return this.encoder;
     }
 
     // Method to set motors speed
@@ -91,25 +69,6 @@ public class ElevatorLift extends Subsystem {
 
         // Set speed of speed controllers (multiplied by modifiers)
         motor.set(vector);
-
-    }
-
-    /**
-     * Use this method to find how far the elevator has travelled since last reset
-     * @return double representing travel distance in inches
-     */
-    public double getDistance() {
-
-        return this.encoder.getDistance();
-
-    }
-
-    /**
-     * Reset the encoder counter
-     */
-    public void resetEncoder() {
-
-        this.encoder.reset();
 
     }
     

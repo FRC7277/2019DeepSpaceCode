@@ -41,14 +41,19 @@ public class RobotMap {
     public static final int encoderAChannel = 8;
     public static final int encoderBChannel = 9;
 
-    // Encoder tick to distance ratio
+    // Encoder data
+    // Number of physical slots in encoder, 90 per revolution
+    public static final double encoderRevolutionTicks = 90;
+    // Radius of the gear attached to the encoder (in inches)
+    public static final double encoderGearRadius = 0;
     // This is the distance the elevator rises (in inches) in 1 pulse of the encoder
     public static final double encoderPulseDistance = 1;
 
-    // Elevator speed constant
+    // Elevator joystick speed modifier
     public static final double elevatorModifier = 0.50;
     // Passive voltage always sent to elevator on top of inputs
-    public static final double elevatorPassive = 0;
+    // Ensures that the elavator doesnt fall when not controlled
+    public static final double elevatorPassive = 0.05;
     // Ratio between elevator travel time and distance (will be outdated with encoder)
     public static final double elevatorTimePerInch = 0.01;
 
