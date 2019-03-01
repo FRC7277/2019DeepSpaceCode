@@ -47,13 +47,14 @@ public class RobotMap {
     // Radius of the gear attached to the encoder (in inches)
     public static final double encoderGearRadius = 0;
     // This is the distance the elevator rises (in inches) in 1 pulse of the encoder
-    public static final double encoderPulseDistance = 1;
+    // Currently experimental, should find radius of gear to mathematicall compute this
+    public static final double encoderPulseDistance = 44.5/481.0;
 
     // Elevator joystick speed modifier
     public static final double elevatorModifier = 0.50;
     // Passive voltage always sent to elevator on top of inputs
     // Ensures that the elavator doesnt fall when not controlled
-    public static final double elevatorPassive = 0.05;
+    public static final double elevatorPassive = 0.07;
     // Ratio between elevator travel time and distance (will be outdated with encoder)
     public static final double elevatorTimePerInch = 0.01;
 
