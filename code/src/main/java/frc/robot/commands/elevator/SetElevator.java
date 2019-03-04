@@ -7,7 +7,10 @@
 
 package frc.robot.commands.elevator;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class SetElevator extends BaseElevator {
 
@@ -16,7 +19,7 @@ public class SetElevator extends BaseElevator {
   public SetElevator(double position) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.elevator);
+    super();
     this.position = position;
 
   }
@@ -25,6 +28,10 @@ public class SetElevator extends BaseElevator {
   @Override
   protected void initialize() {
 
+    super.initialize();
+    // Setup timeout TODO static reference? this is safety measure though
+    setTimeout(RobotMap.elevatorTimeout);
+    // Set target position and enable pids
     Robot.elevator.setSetpoint(this.position);
     Robot.elevator.enable();
     
@@ -33,12 +40,13 @@ public class SetElevator extends BaseElevator {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    SmartDashboard.putNumber("Elevator Distance", Robot.elevatorEncoder.getDistance());
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.elevator.onTarget();
+    return Robot.elevator.onTarget() || isTimedOut();
   }
 
   // Called once after isFinished returns true
@@ -46,6 +54,7 @@ public class SetElevator extends BaseElevator {
   protected void end() {
     Robot.elevator.setSpeed(0.0);
     Robot.elevator.disable();
+    System.out.println("PID set done");
   }
 
   // Called when another command which requires one or more of the same

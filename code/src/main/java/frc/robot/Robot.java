@@ -114,6 +114,10 @@ public class Robot extends TimedRobot {
 
         // Create input keys
         SmartDashboard.putNumber("ElevatorPassive", RobotMap.elevatorPassive);
+        SmartDashboard.putNumber("ElevatorTolerance", RobotMap.elevatorTolerance);
+        SmartDashboard.putNumber("ElevatorP", RobotMap.kP);
+        SmartDashboard.putNumber("ElevatorI", RobotMap.kI);
+        SmartDashboard.putNumber("ElevatorD", RobotMap.kD);
         
     }
 

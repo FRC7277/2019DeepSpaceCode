@@ -62,12 +62,14 @@ public class RobotMap {
     public static final double maximumElevatorSpeed = 0.5;
 
     // Elevator PID settings
-    // PID values
-    public static final double kP = 0.1;
+    // Default PID values
+    public static final double kP = 0.2;
     public static final double kI = 0.0;
     public static final double kD = 0.0;
     // Tolerance for elevator position (in inches)
-    public static final double elevatorTolerance = 1;
+    public static final double elevatorTolerance = 0.1;
+    // Maximum time PID commands will run for (in seconds) to prevent freezes
+    public static final double elevatorTimeout = 4;
 
     // Controller button mappings
     public static final int aButton = 1;

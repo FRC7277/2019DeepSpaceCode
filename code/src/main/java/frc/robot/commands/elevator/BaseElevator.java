@@ -8,8 +8,10 @@
 package frc.robot.commands.elevator;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class BaseElevator extends Command {
 
@@ -23,6 +25,13 @@ public class BaseElevator extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    // Update PID coefficients
+    Robot.elevator.getPIDController().setP(SmartDashboard.getNumber("ElevatorP", RobotMap.kP));
+    Robot.elevator.getPIDController().setI(SmartDashboard.getNumber("ElevatorI", RobotMap.kI));
+    Robot.elevator.getPIDController().setD(SmartDashboard.getNumber("ElevatorD", RobotMap.kD));
+    // Update tolerance
+    Robot.elevator.setAbsoluteTolerance(SmartDashboard.getNumber("ElevatorTolerance", RobotMap.elevatorTolerance));
+    System.out.println("Elevator Command starting");
   }
 
   // Called repeatedly when this Command is scheduled to run
