@@ -43,6 +43,9 @@ public class RobotMap {
 
     // Hab lift motor
     public static final int habLift = 6; //TODO find the mapping for this
+    // Time to lifting in seconds
+    public static final double habTime = 0.1; // TODO determine actual time
+    public static final double habModifier = 1;
 
     // Elevator speed constant
     public static final double elevatorModifier = 0.50;

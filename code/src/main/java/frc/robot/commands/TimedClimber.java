@@ -8,16 +8,18 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Robot;
 
-public class PowerIntake extends Command {
+public class TimedClimber extends Command {
+
+  private double time;
   private double power;
-  public PowerIntake(double power) {
+  public TimedClimber(double power, double time) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.intake);
+    requires(Robot.climber);
+    this.time = time;
     this.power = power;
 
   }
@@ -25,8 +27,9 @@ public class PowerIntake extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+
     Robot.intake.setSpeed(this.power);
-    SmartDashboard.putString("intake", Double.toString(this.power));;
+    setTimeout(this.time);
     
   }
 
@@ -38,14 +41,13 @@ public class PowerIntake extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return isTimedOut();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.intake.setSpeed(0.0);
-    SmartDashboard.putString("intake", "0");
+    Robot.climber.setSpeed(0.0);
   }
 
   // Called when another command which requires one or more of the same
