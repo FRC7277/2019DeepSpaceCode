@@ -44,7 +44,7 @@ public class AutoAlign extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (Math.abs(centerX) <= 0.01) || isTimedOut();
+    return ((centerX <= 0.01) || isTimedOut());
   }
 
   // Called once after isFinished returns true

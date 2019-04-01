@@ -53,7 +53,7 @@ public class RobotMap {
     public static final double solenoidTime = 0.5;
 
     // Controller button mappings
-    public static final int aButton = 1;
+    public static final int aButton = 1; 
     public static final int bButton = 2; //B button
     public static final int xButton = 3;
     public static final int yButton = 4;
