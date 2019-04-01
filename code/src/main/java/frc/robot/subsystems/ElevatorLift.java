@@ -9,7 +9,6 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -81,8 +80,6 @@ public class ElevatorLift extends Subsystem {
      */
     public void setSpeed(double speed) {
 
-        SmartDashboard.putNumber("ELPOut", SmartDashboard.getNumber("ElPassive", RobotMap.elevatorPassive));
-
         // Add speed required to maintain position
         double vector = speed + SmartDashboard.getNumber("ElPassive", RobotMap.elevatorPassive);
 
@@ -91,7 +88,7 @@ public class ElevatorLift extends Subsystem {
         vector = vector < -1 ? -1 : vector;
 
         // Set speed of speed controllers (multiplied by modifiers)
-        main.set(-vector);
+        main.set(-vector*this.modifier);
 
     }
     

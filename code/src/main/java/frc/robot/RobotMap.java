@@ -42,15 +42,15 @@ public class RobotMap {
     public static final int leftIntake = 8;
 
     // Hab lift motor
-    public static final int habLift = 6; //TODO find the mapping for this
+    public static final int habLift = 6; //TODO find the mapping for this and all the CAN motors
     // Time to lifting in seconds
     public static final double habTime = 0.1; // TODO determine actual time
     public static final double habModifier = 1;
 
     // Elevator speed constant
-    public static final double elevatorModifier = 0.50;
+    public static final double elevatorModifier = 1;
     public static final double elevatorTimeout = 10.0;
-    public static final double elevatorPassive = 0.0;
+    public static final double elevatorPassive = 0.0; //TODO test this out
     public static final double elevatorTimePerInch = 0.01;
 
     // Pneumatic

@@ -28,7 +28,7 @@ public class TimedClimber extends Command {
   @Override
   protected void initialize() {
 
-    Robot.intake.setSpeed(this.power);
+    Robot.climber.setSpeed(this.power);
     setTimeout(this.time);
     
   }

@@ -16,8 +16,6 @@ import frc.robot.RobotMap;
 import frc.robot.commands.LaunchHatch;
 import frc.robot.commands.TimedClimber;
 import frc.robot.commands.AutoAlign;
-import frc.robot.commands.elevator.TimedElevator;
-import frc.robot.commands.elevator.DistanceElevator;
 
 /**
  * This class is the glue that binds the controls on the physical operator
