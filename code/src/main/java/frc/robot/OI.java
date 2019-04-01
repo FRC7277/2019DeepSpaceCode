@@ -75,7 +75,7 @@ public class OI {
   private Button inButton = new JoystickButton(controller, RobotMap.xButton);
   private Button outButton = new JoystickButton(controller, RobotMap.yButton);
 
-  private Button upButton = new JoystickButton(controller, RobotMap.lbButton);
+  //private Button upButton = new JoystickButton(controller, RobotMap.lbButton);
 
   private Button alignButton = new JoystickButton(joystick, RobotMap.joystickSideButton);
 
