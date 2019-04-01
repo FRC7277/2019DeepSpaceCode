@@ -57,22 +57,10 @@ public class VisionThread extends Thread {
 
         // Create a CvSink pulling from the camera
         CvSink cvSink = CameraServer.getInstance().getVideo();
-        // Create cv output linked to SmartDashboard component 'Gray'
-        CvSource outputStream = CameraServer.getInstance().putVideo("Gray", 320, 240);
-        // Create cv output linked to SmartDashboar d "contour" component
-        CvSource contourStream = CameraServer.getInstance().putVideo("Contour", 320, 240);
-
-
-        // Create misc output
-        CvSource miscOutput = CameraServer.getInstance().putVideo("Misc", 320, 240);
 
         // Create mats (matrice capable of containing images) for source and output
         // Source stores a raw frame from cvSink
         this.source = new Mat();
-        // Output provides container to put processed frame in
-        Mat output = new Mat();
-        // Create choice string holder
-        String choice;
 
         //Create pipeline object
         GripPipeline pipeline = new GripPipeline();
@@ -82,19 +70,6 @@ public class VisionThread extends Thread {
             
             // Frame is taken from cvSink and put into source
             if (cvSink.grabFrame(source) != 0) {
-                // Source is proccessed, and the result is put in output
-                // Current processing is turning to grayscale (mainly for testing)
-                Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
-                // Output is pushed into the output stream (linked to dashboard)
-                outputStream.putFrame(output);
-
-                //Ouput misc
-                choice = vc_chooser.getSelected();
-                if (choice.equals("Gray")) {
-                    miscOutput.putFrame(output);
-                } else {
-                    miscOutput.putFrame(source);
-                }
                 
                 //Testing for Error
                 SmartDashboard.putString("VisStage", "A");
@@ -132,13 +107,6 @@ public class VisionThread extends Thread {
                     MatOfPoint2f firstBox = new MatOfPoint2f( contourOutput.get(0).toArray() );                
                     MatOfPoint2f secondBox = new MatOfPoint2f( contourOutput.get(1).toArray() );
 
-                    Mat boxVisual = new Mat();
-                    Imgproc.cvtColor(firstBox, boxVisual, Imgproc.COLOR_BGR2GRAY);
-                    SmartDashboard.putNumber("Channels",boxVisual.channels());
-
-                    // Output onto smartdashboard?
-                    contourStream.putFrame(boxVisual/*pipeline.cvErodeOutput()*/);
-
                     //Creating a rotated rectangle that rotated at the right angle
                     RotatedRect outlineBox1 = Imgproc.minAreaRect(firstBox);
                     RotatedRect outlineBox2 = Imgproc.minAreaRect(secondBox);
@@ -162,12 +130,8 @@ public class VisionThread extends Thread {
                 }else{
                     targetCenterX = -1;
                 }
-
-                //SmartDashboard.putString("VisStage", "E");
-
                 
             }
-            
 
         }
 
