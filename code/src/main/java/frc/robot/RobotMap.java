@@ -42,6 +42,9 @@ public class RobotMap {
     public static final int rightIntake = 7;
     public static final int leftIntake = 8;
 
+    // Hab lift motor
+    public static final int habLift = -1; //TODO find the mapping for this
+
     // Elevator speed constant
     public static final double elevatorModifier = 0.50;
     public static final double elevatorTimeout = 10.0;
