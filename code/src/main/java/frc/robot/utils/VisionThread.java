@@ -117,7 +117,7 @@ public class VisionThread extends Thread {
                     By adding the two top left corner and one rectangle worth of distance
                     we can get the center between the two reflective tape.
                     */
-                    targetCenterX = ((center1.x + center2.x)/2 );
+                    this.targetCenterX = ((center1.x + center2.x)/2 );
                     SmartDashboard.putNumber("Target Center X", targetCenterX);
                     SmartDashboard.putNumber("Angle Box 1", outlineBox1.angle);
                     SmartDashboard.putNumber("Angle Box 2", outlineBox2.angle);
@@ -128,7 +128,7 @@ public class VisionThread extends Thread {
                     
                     
                 }else{
-                    targetCenterX = -1;
+                    this.targetCenterX = 0;
                 }
                 
             }

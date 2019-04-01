@@ -20,6 +20,7 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ElevatorLift;
 import frc.robot.subsystems.HatchPlacer;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.HabLift;
 
 // Import utils
 import frc.robot.utils.GripPipeline;
@@ -40,7 +41,7 @@ public class Robot extends TimedRobot {
     // Create subsystems used by buttons
     public static HatchPlacer hatcher = new HatchPlacer();
     public static Intake intake = new Intake();
-    
+    public static HabLift climber = new HabLift();
 
     // Create subsystem that use joysticks
     public static DriveTrain drivetrain = new DriveTrain();
