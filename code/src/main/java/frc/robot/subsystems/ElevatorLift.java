@@ -25,12 +25,8 @@ public class ElevatorLift extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
-    // Define motor object for each motor
-    private SpeedController left;
-    private SpeedController right;
-    
     // Define speed controller group
-    private SpeedControllerGroup main;
+    private SpeedController main;
 
     // Define switch array
     private DigitalInput[] switches;
@@ -41,14 +37,10 @@ public class ElevatorLift extends Subsystem {
     /**
      * Takes 2 port-integers, for left and right motor
      */
-    public ElevatorLift(int left, int right, double modifier) {
+    public ElevatorLift(int port, double modifier) {
         
         // Create Motor objects using parameters
-        this.left = new WPI_VictorSPX(left);
-        this.right = new WPI_VictorSPX(right);
-        
-        // Create group of controllers
-        this.main = new SpeedControllerGroup(this.left, this.right);
+        this.main = new WPI_VictorSPX(port);
 
         // Create DI references to limit switches
         switches = new DigitalInput[]{new DigitalInput(RobotMap.switches[0])};
@@ -64,14 +56,14 @@ public class ElevatorLift extends Subsystem {
     public ElevatorLift() {
         
         // Pass robotmap into DI constructor
-        this(RobotMap.leftElevator, RobotMap.rightElevator, RobotMap.elevatorModifier);
+        this(RobotMap.elevatorMotor, RobotMap.elevatorModifier);
 
     }
 
     /**
      * Accessor for the motor group
      */
-    public SpeedControllerGroup getMotors() {
+    public SpeedController getMotors() {
         return this.main;
     }
 

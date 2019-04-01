@@ -9,7 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.DMC60;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 // TODO figure out actualy motor controller
 
 //import frc.robot.commands.ControlElevator;
@@ -34,7 +34,7 @@ public class HabLift extends Subsystem {
     public HabLift(int port) {
         
         // Create Motor objects using parameters
-        this.motor = new DMC60(port);
+        this.motor = new WPI_VictorSPX(port);
         
     }
     
