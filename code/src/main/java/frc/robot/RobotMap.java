@@ -72,5 +72,8 @@ public class RobotMap {
 
     // Limit switch references (Bottom to Top)
     public static final int[] switches = {2};
+
+    // Auto align timeout
+    public static final double alignTimeout = 2;
     
 }

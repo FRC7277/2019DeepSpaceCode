@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+import frc.robot.RobotMap;
 import frc.robot.Robot;
 
 /**
@@ -17,34 +18,35 @@ import frc.robot.Robot;
 public class AutoAlign extends Command {
   
   private double centerX;
-  private double time = 2.0;
+  private double time;
   public AutoAlign() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.drivetrain);
+    this.time = RobotMap.alignTimeout;
     
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    setTimeout(this.time);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    setTimeout(this.time);
     //Settnig the center of the X value to the right on
-    centerX = Robot.visionProcess.getTargetCenterX();
+    this.centerX = Robot.visionProcess.getTargetCenterX();
     //Making it so that the robot turn until the thing return zero
-    double turn = centerX - (320 / 2);
-    Robot.drivetrain.getDrive().arcadeDrive(0, turn * 0.005);
+    double turn = centerX - (320 / 2); // TODO semi random numbers that should in be RobotMap
+    Robot.drivetrain.getDrive().arcadeDrive(0, turn * 0.005); // TODO move the .005 modifier to robotmap
     
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return ((Math.abs(centerX) <= 0.01) || isTimedOut());
+    return ((Math.abs(this.centerX) <= 0.01) || isTimedOut());
   }
 
   // Called once after isFinished returns true
