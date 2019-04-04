@@ -21,7 +21,7 @@ public class RobotMap {
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
 
-    // Drive train motors
+    // Drive train motors (CAN)
     public static final int leftBack = 2;
     public static final int leftFront = 4;
     public static final int rightBack = 1;
@@ -34,7 +34,7 @@ public class RobotMap {
     public static final int joystick = 0;
     public static final int controller = 1;
 
-    // Elevator lift motors
+    // Elevator lift motors (CAN)
     public static final int elevatorMotor = 5;
 
     // Intake motors
@@ -54,7 +54,7 @@ public class RobotMap {
     public static final double elevatorTimePerInch = 0.01;
 
     // Pneumatic
-    public static final int pcm = 7;
+    public static final int pcm = 7; // CAN bus number
     public static final int solenoid = 0;
     public static final double solenoidTime = 0.5;
 
