@@ -51,7 +51,7 @@ public class VisionThread extends Thread {
         UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
         // Define resolution for the camera
         camera.setResolution(320, 240);
-        camera.setFPS(25);
+        camera.setFPS(20);
 
         // System.out.println("#&# Referenced camera "+camera);
 
@@ -70,21 +70,12 @@ public class VisionThread extends Thread {
             
             // Frame is taken from cvSink and put into source
             if (cvSink.grabFrame(source) != 0) {
-                
-                //Testing for Error
-                SmartDashboard.putString("VisStage", "A");
 
                 //Passing the image mat into the GRIP pipeline
                 pipeline.process(source);
 
-                //Testing for Error
-                SmartDashboard.putString("VisStage", "B");
-
                 //Passing the output into the Array
                 this.contourOutput = pipeline.filterContoursOutput();
-                
-                //Testing for Error
-                SmartDashboard.putString("VisStage", "F");
 
                 //Checking for size of the outline
                 int contourSize = pipeline.filterContoursOutput().size();
@@ -96,9 +87,6 @@ public class VisionThread extends Thread {
                 //if there is something within the Contour Output
                 
                 if (contourSize >= 2){
-
-                    //Testing for Error
-                    SmartDashboard.putString("VisStage", "C");
                     
                     //Grabbing the two countour
                     /*Rect r1 = Imgproc.boundingRect(contourOutput.get(0));
@@ -121,11 +109,6 @@ public class VisionThread extends Thread {
                     SmartDashboard.putNumber("Target Center X", targetCenterX);
                     SmartDashboard.putNumber("Angle Box 1", outlineBox1.angle);
                     SmartDashboard.putNumber("Angle Box 2", outlineBox2.angle);
-
-                    //Testing for Error
-                    SmartDashboard.putString("VisStage", "D");
-
-                    
                     
                 }else{
                     this.targetCenterX = 0;
