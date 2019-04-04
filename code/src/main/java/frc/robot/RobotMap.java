@@ -28,7 +28,7 @@ public class RobotMap {
     public static final int rightFront = 3;
 
     // Drive joy modifiers
-    public static final double zMod = 0.6;
+    public static final double zMod = 1.0;
     
     // Joystick number
     public static final int joystick = 0;
@@ -73,7 +73,19 @@ public class RobotMap {
     // Limit switch references (Bottom to Top)
     public static final int[] switches = {2};
 
+    // Autoalign config
     // Auto align timeout
     public static final double alignTimeout = 2;
+    // Modifier on turn speed (distance * modifier)
+    public static final double alignModifier = 0.005;
+    // Tolerance (in pixels?) to align with the center
+    public static final double alignTolerance = 10;
+
+    // Camera settings
+    public static final int cameraWidth = 320;
+    public static final int cameraHeight = 240;
+    public static final int cameraFPS = 20;
     
+    public static final double autoForwardTime = 0.25;
+
 }

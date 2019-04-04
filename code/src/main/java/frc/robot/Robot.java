@@ -21,6 +21,9 @@ import frc.robot.subsystems.ElevatorLift;
 import frc.robot.subsystems.HatchPlacer;
 import frc.robot.subsystems.HabLift;
 
+// Import commands
+import frc.robot.commands.TimedDrive;
+
 // Import utils
 import frc.robot.utils.GripPipeline;
 import frc.robot.utils.VisionThread;
@@ -107,6 +110,11 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void autonomousInit() {
+
+        // Drive straight forward at start of sandstorm
+        TimedDrive autoCommand = new TimedDrive(1.0, RobotMap.autoForwardTime);
+        autoCommand.start();
+        autoCommand.close();
 
     }
 

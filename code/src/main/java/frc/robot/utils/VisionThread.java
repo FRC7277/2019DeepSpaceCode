@@ -3,6 +3,8 @@ package frc.robot.utils;
 // Import GRIP pipeline
 import frc.robot.utils.GripPipeline;
 
+// Import RobotMap
+import frc.robot.RobotMap;
 
 // Import CameraServer
 import edu.wpi.first.cameraserver.CameraServer;
@@ -50,8 +52,8 @@ public class VisionThread extends Thread {
         // Reference USB camera connected to RIO (and also start automatic capture)
         UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
         // Define resolution for the camera
-        camera.setResolution(320, 240);
-        camera.setFPS(20);
+        camera.setResolution(RobotMap.cameraWidth, RobotMap.cameraHeight);
+        camera.setFPS(RobotMap.cameraFPS);
 
         // System.out.println("#&# Referenced camera "+camera);
 
@@ -106,14 +108,13 @@ public class VisionThread extends Thread {
                     we can get the center between the two reflective tape.
                     */
                     this.targetCenterX = ((center1.x + center2.x)/2 );
-                    SmartDashboard.putNumber("Target Center X", targetCenterX);
                     SmartDashboard.putNumber("Angle Box 1", outlineBox1.angle);
                     SmartDashboard.putNumber("Angle Box 2", outlineBox2.angle);
                     
                 }else{
                     this.targetCenterX = 0;
                 }
-                
+                SmartDashboard.putNumber("Target Center X", targetCenterX);
             }
 
         }
