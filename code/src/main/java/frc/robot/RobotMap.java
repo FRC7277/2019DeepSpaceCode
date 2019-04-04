@@ -56,7 +56,7 @@ public class RobotMap {
     // Pneumatic
     public static final int pcm = 7; // CAN bus number
     public static final int solenoid = 0;
-    public static final double solenoidTime = 0.5;
+    public static final double solenoidTime = 0.75;
 
     // Controller button mappings
     public static final int aButton = 1; 
