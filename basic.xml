@@ -1,57 +1,69 @@
 <xml version="1.0">
 <dashboard>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="291" y="120"/>
+		<property name="Text" value="Editable Modifiers"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="28" y="68"/>
+		<property name="Text" value="Info"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="20" y="257"/>
+		<property name="Text" value="Diagnostics"/>
+	</static-widget>
 	<widget field="Angle Box 2" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="21" y="309"/>
+		<location x="12" y="322"/>
 		<height>20</height>
 	</widget>
 	<widget field="Angle Box 1" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="21" y="288"/>
+		<location x="12" y="297"/>
 	</widget>
 	<widget field="Contour count" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="10" y="331"/>
+		<location x="3" y="348"/>
 	</widget>
 	<widget field="Target Center X" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="3" y="355"/>
+		<location x="3" y="375"/>
 	</widget>
 	<widget field="ZMod" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="163" y="96"/>
+		<location x="289" y="144"/>
 	</widget>
 	<widget field="ELPOut" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="21" y="237"/>
+		<location x="242" y="343"/>
 	</widget>
 	<widget field="ElPassive" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="13" y="205"/>
+		<location x="270" y="171"/>
 	</widget>
 	<widget field="Topguard" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="12" y="182"/>
+		<location x="231" y="368"/>
 		<height>20</height>
 	</widget>
 	<widget field="ModEl" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="162" y="203"/>
+		<location x="248" y="319"/>
 	</widget>
 	<widget field="Drive Y:" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="20" y="112"/>
+		<location x="25" y="140"/>
 	</widget>
 	<widget field="Drive Z:" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="20" y="96"/>
+		<location x="26" y="115"/>
 	</widget>
 	<widget field="Drive X:" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="20" y="80"/>
+		<location x="26" y="90"/>
 	</widget>
 	<widget field="launch" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="159" y="161"/>
+		<location x="31" y="180"/>
 		<width>128</width>
 	</widget>
 	<widget field="Elevator" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="18" y="160"/>
+		<location x="240" y="298"/>
 	</widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-		<location x="2" y="-1"/>
+		<location x="8" y="3"/>
 		<property name="Text" value="Connection"/>
 	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
-		<location x="62" y="2"/>
-		<width>222</width>
+		<location x="70" y="5"/>
+		<width>397</width>
 		<height>10</height>
 	</static-widget>
 	<widget field="Auto mode" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
@@ -60,65 +72,13 @@
 	<widget field="Camera mode" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
 		<location x="15" y="420"/>
 	</widget>
-	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-		<location x="2" y="-1"/>
-		<property name="Text" value="Connection"/>
-	</static-widget>
-	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
-		<location x="62" y="2"/>
-		<width>222</width>
-		<height>10</height>
-	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
-		<location x="290" y="4"/>
-		<width>328</width>
-		<height>221</height>
+		<location x="470" y="3"/>
+		<width>617</width>
+		<height>462</height>
 		<property name="Camera Choice" value="USB Camera 0"/>
 	</static-widget>
 </dashboard>
 <live-window>
-	<widget field="DriveTrain" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
-		<location x="8" y="1"/>
-	</widget>
-	<widget field="HabLift" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
-		<location x="7" y="22"/>
-	</widget>
-	<widget field="ElevatorLift" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
-		<location x="6" y="24"/>
-	</widget>
-	<widget field="Ungrouped" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
-		<widget field="DigitalInput[2]" type="Digital Input" class="edu.wpi.first.smartdashboard.livewindow.elements.DigitalInputDisplay">
-			<location x="6" y="16"/>
-			<height>20</height>
-			<width>297</width>
-		</widget>
-		<widget field="Compressor[7]" type="Compressor" class="edu.wpi.first.smartdashboard.livewindow.elements.DigitalOutputController">
-			<location x="85" y="36"/>
-			<height>23</height>
-			<width>136</width>
-		</widget>
-		<widget field="Victor SPX [5]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
-			<location x="6" y="59"/>
-			<height>45</height>
-			<width>297</width>
-		</widget>
-		<widget field="Solenoid[7,0]" type="Solenoid" class="edu.wpi.first.smartdashboard.livewindow.elements.DigitalOutputController">
-			<location x="92" y="104"/>
-			<height>23</height>
-			<width>123</width>
-		</widget>
-		<widget field="Victor SPX [6]" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
-			<location x="6" y="127"/>
-			<height>45</height>
-			<width>297</width>
-		</widget>
-		<location x="8" y="2"/>
-		<width>309</width>
-		<height>178</height>
-	</widget>
-	<widget field="HatchPlacer" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
-		<location x="30" y="8"/>
-	</widget>
 </live-window>
-	<hidden field="VisStage"/>
 </xml>
