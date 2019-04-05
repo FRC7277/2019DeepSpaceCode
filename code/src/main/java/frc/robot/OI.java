@@ -96,7 +96,7 @@ public class OI {
 
     //upButton.whenPressed(new DistanceElevator(40));
 
-    alignButton.whenPressed(new AutoAlign());
+    //alignButton.whenPressed(new AutoAlign());
 
   }
 
