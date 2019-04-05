@@ -87,11 +87,14 @@ public class OI {
   public void linkButtons() {
 
     //Assigning commands to buttons
+    // Launches the Hatch (B button)
     launchButton.whenPressed(new LaunchHatch());
 
+    // Hab climb buttons (subsystem not actually on the robot yet)
     inButton.whenPressed(new TimedClimber(-RobotMap.habModifier, RobotMap.habTime));
     outButton.whenPressed(new TimedClimber(RobotMap.habModifier, RobotMap.habTime));
 
+    // Align button (should work?)
     alignButton.whenPressed(new AutoAlign());
 
   }

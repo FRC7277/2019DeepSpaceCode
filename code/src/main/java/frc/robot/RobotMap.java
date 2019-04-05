@@ -79,7 +79,7 @@ public class RobotMap {
     // Auto align timeout
     public static final double alignTimeout = 2;
     // Modifier on turn speed (distance * modifier)
-    public static final double alignModifier = 0.005;
+    public static final double alignModifier = 1/40;
     // Tolerance (in pixels?) to align with the center
     public static final double alignTolerance = 10;
 
