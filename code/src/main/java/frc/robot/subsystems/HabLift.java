@@ -10,11 +10,8 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.SpeedController;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-// TODO figure out actualy motor controller
 
-//import frc.robot.commands.ControlElevator;
-
-//import frc.robot.Robot;
+//import robotMap;
 import frc.robot.RobotMap;
 
 /**
