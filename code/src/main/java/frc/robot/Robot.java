@@ -112,9 +112,11 @@ public class Robot extends TimedRobot {
     public void autonomousInit() {
 
         // Drive straight forward at start of sandstorm
+        /* Dont do autonomous (likely to mess up)
         TimedDrive autoCommand = new TimedDrive(1.0, RobotMap.autoForwardTime);
         autoCommand.start();
         autoCommand.close();
+        */
 
     }
 
