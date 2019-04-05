@@ -75,9 +75,7 @@ public class OI {
   private Button inButton = new JoystickButton(controller, RobotMap.xButton);
   private Button outButton = new JoystickButton(controller, RobotMap.yButton);
 
-  //private Button upButton = new JoystickButton(controller, RobotMap.lbButton);
-
-  private Button alignButton = new JoystickButton(joystick, RobotMap.joystickSideButton);
+  private Button alignButton = new JoystickButton(joystick, RobotMap.joystick11);
 
   public OI() {
     
@@ -94,9 +92,7 @@ public class OI {
     inButton.whenPressed(new TimedClimber(-RobotMap.habModifier, RobotMap.habTime));
     outButton.whenPressed(new TimedClimber(RobotMap.habModifier, RobotMap.habTime));
 
-    //upButton.whenPressed(new DistanceElevator(40));
-
-    //alignButton.whenPressed(new AutoAlign());
+    alignButton.whenPressed(new AutoAlign());
 
   }
 

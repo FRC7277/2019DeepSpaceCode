@@ -50,7 +50,7 @@ public class RobotMap {
     // Elevator speed constant
     public static final double elevatorModifier = 1;
     public static final double elevatorTimeout = 10.0;
-    public static final double elevatorPassive = 0.13; //TODO test this out
+    public static final double elevatorPassive = 0.13;
     public static final double elevatorTimePerInch = 0.01;
 
     // Pneumatic
@@ -68,7 +68,9 @@ public class RobotMap {
     public static final int rbButton = 6;
 
     //Joystick button mappings
-    public static final int joystickSideButton = 1;
+    public static final int joystickTrigger = 1;
+    public static final int joystickSideButton = 2;
+    public static final int joystick11 = 11;
 
     // Limit switch references (Bottom to Top)
     public static final int[] switches = {2};
@@ -86,6 +88,7 @@ public class RobotMap {
     public static final int cameraHeight = 240;
     public static final int cameraFPS = 20;
     
+    // Autonomous configs
     public static final double autoForwardTime = 1;
 
 }
