@@ -2,10 +2,12 @@
 
 ## Introduction
 
-## 1. RoboRio
+## Laptop
 
-## 2. Radio
+Install GitHub Desktop, sign in to FRC7277, and clone the robot-code repository.
 
-## 3. Laptop
+## RoboRio
 
-## 4. Regional Events
+## Radio
+
+## Regional Events
