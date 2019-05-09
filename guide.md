@@ -10,6 +10,10 @@ Install the latest FRC Update Suite by following
 https://wpilib.screenstepslive.com/s/currentCS/m/cpp/l/1027499-installing-the-frc-update-suite-all-languages 
 or the most recent version.
 
+Follow the guide at
+https://wpilib.screenstepslive.com/s/currentCS/m/java/l/1027503-installing-c-and-java-development-tools-for-frc
+to install the programming tools.
+
 ## RoboRio
 
 ## Radio
