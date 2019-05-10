@@ -14,7 +14,11 @@ Follow the guide at
 https://wpilib.screenstepslive.com/s/currentCS/m/java/l/1027503-installing-c-and-java-development-tools-for-frc
 to install the programming tools.
 
+To deploy code from VSCode, use the Deploy Robot Code command from the cmd line brought up by Ctrl Shift P
+
 ## RoboRio
+
+Use RoboRio Imaging Tool to reformat the Rio to the latest version (v14+) and update the firmware also.
 
 ## Radio
 
