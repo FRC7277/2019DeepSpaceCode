@@ -18,4 +18,13 @@ to install the programming tools.
 
 ## Radio
 
+Follow this guide
+https://wpilib.screenstepslive.com/s/currentCS/m/getting_started/l/144986-programming-your-radio
+You will probably have issues fixed by this
+https://wpilib.screenstepslive.com/s/currentCS/m/getting_started/l/144986-programming-your-radio#Troubleshooting-Disabling-Network-Adapters
+Note: For flashing firmware, start only with the ethernet connected to radio, and then start loading the firmware, 
+and *then* plug in the power to the radio when it asks.
+https://www.chiefdelphi.com/t/how-to-fix-timeout-waiting-for-radio-frc-radio-config-utility/155874
+Make sure to turn the Wifi adapter back on once you are done.
+
 ## Regional Events
